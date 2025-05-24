@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Daftar Post - My Blog{% endblock %}
+
+{% block content %}
+    <h2>INGFOOOOOO JUDULLLL</h2>
+    
+    {% for post in posts %}
+        <div class="post">
+            <h3 class="post-title">
+                <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+            </h3>
+            <p class="post-meta">
+                Oleh {{ post.author }} pada {{ post.published_date|date:"d F Y H:i" }}
+            </p>
+            <p>{{ post.content|truncatewords:50 }}</p>
+        </div>
+    {% empty %}
+        <p>HIDUPPP JOKOOWII</p>
+    {% endfor %}
+{% endblock %}

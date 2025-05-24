@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ post.title }} - My Blog{% endblock %}
+
+{% block content %}
+    <article class="post">
+        <h2>{{ post.title }}</h2>
+        <p class="post-meta">
+            Oleh {{ post.author }} pada {{ post.published_date|date:"d F Y H:i" }}
+        </p>
+        <div style="margin-top: 20px; line-height: 1.6;">
+            {{ post.content|linebreaks }}
+        </div>
+    </article>
+    
+    <div style="margin-top: 30px;">
+        <a href="{% url 'post_list' %}" style="color: #333; text-decoration: none;">← Kembali ke daftar post</a>
+    </div>
+{% endblock %}
