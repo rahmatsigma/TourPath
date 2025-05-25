@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fafc;
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.card-shadow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: translateY(-5px);
+}
+
+.animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.destination-card {
+    min-width: 280px;
+}
+
+.preference-chip {
+    transition: all 0.2s ease;
+}
+
+.preference-chip:hover {
+    background-color: #6366f1;
+    color: white;
+}
+
+.active-preference {
+    background-color: #6366f1;
+    color: white;
+}
+
+/* Dropdown animation */
+.dropdown-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.dropdown-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 200ms, transform 200ms;
+}
+
+.dropdown-exit {
+    opacity: 1;
+}
+
+.dropdown-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 200ms, transform 200ms;
+}

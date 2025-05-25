@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourPath | Home</title>    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-route text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">TourPath</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Destinasi</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Rute</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Itinerary</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <div class="flex items-center">
+                                    <span class="mr-3 text-gray-700 font-medium">John Doe</span>
+                                    <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">J</div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Dropdown menu, show/hide based on menu state -->
+                        <div id="user-dropdown" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                <i class="fas fa-user-cog mr-2 text-gray-500"></i> Settings
+                            </a>                            <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Search -->
+    <div class="hero-gradient text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                    <span class="block">Temukan Petualangan</span>
+                    <span class="block text-indigo-200">Impian Anda</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-indigo-100 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    TourPath membantu anda merencanakan perjalanan sempurna berdasarkan preferensi dan minat Anda.
+                </p>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="mt-8 max-w-2xl mx-auto">
+                <div class="relative rounded-md shadow-sm">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-indigo-300"></i>
+                    </div>
+                    <input type="text" name="search" id="search" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 pr-12 py-4 border-0 rounded-lg text-gray-900 placeholder-gray-400" placeholder="Cari destinasi, kota, atau aktivitas...">
+                    <div class="absolute inset-y-0 right-0 flex items-center">
+                        <button type="button" class="h-full py-0 px-4 rounded-r-lg bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                            <i class="fas fa-arrow-right text-white"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quick Filters -->
+                <div class="mt-4 flex flex-wrap justify-center gap-2">
+                    <button type="button" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-700 text-white">
+                        <i class="fas fa-umbrella-beach mr-1"></i> Pantai
+                    </button>
+                    <button type="button" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-indigo-700">
+                        <i class="fas fa-mountain mr-1"></i> Gunung
+                    </button>
+                    <button type="button" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-indigo-700">
+                        <i class="fas fa-city mr-1"></i> Kota
+                    </button>
+                    <button type="button" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-indigo-700">
+                        <i class="fas fa-archway mr-1"></i> Budaya
+                    </button>
+                    <button type="button" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-indigo-700">
+                        <i class="fas fa-utensils mr-1"></i> Kuliner
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popular Destinations -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-900">Destinasi Populer</h2>
+            <a href="#" class="text-indigo-600 hover:text-indigo-500 font-medium">Lihat Semua <i class="fas fa-chevron-right ml-1"></i></a>
+        </div>
+        
+        <div class="relative">
+            <div class="flex space-x-4 overflow-x-auto pb-6 scroll-hidden">
+                <!-- Destination Card 1 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-md hover-scale flex-shrink-0">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Bali" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md">
+                            <i class="fas fa-heart text-red-500"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded">
+                            <i class="fas fa-star mr-1"></i> 4.8
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Bali</h3>
+                        <p class="text-gray-500 text-sm mb-3">Pulau Dewata dengan pantai eksotis dan budaya kaya</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 font-medium">Mulai dari Rp1.2jt</span>
+                            <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 2 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-md hover-scale flex-shrink-0">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Yogyakarta" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded">
+                            <i class="fas fa-star mr-1"></i> 4.7
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Yogyakarta</h3>
+                        <p class="text-gray-500 text-sm mb-3">Kota budaya dengan candi megah dan seni tradisional</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 font-medium">Mulai dari Rp800rb</span>
+                            <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 3 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-md hover-scale flex-shrink-0">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1589330694653-ded6df03f754?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Raja Ampat" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded">
+                            <i class="fas fa-star mr-1"></i> 4.9
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Raja Ampat</h3>
+                        <p class="text-gray-500 text-sm mb-3">Surga bawah laut dengan keanekaragaman hayati</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 font-medium">Mulai dari Rp3.5jt</span>
+                            <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination Card 4 -->
+                <div class="destination-card bg-white rounded-xl overflow-hidden shadow-md hover-scale flex-shrink-0">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Lombok" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md">
+                            <i class="far fa-heart text-gray-400"></i>
+                        </div>
+                        <div class="absolute bottom-2 left-2 bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded">
+                            <i class="fas fa-star mr-1"></i> 4.6
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Lombok</h3>
+                        <p class="text-gray-500 text-sm mb-3">Pantai berpasir putih dan gunung yang menakjubkan</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 font-medium">Mulai dari Rp1.5jt</span>
+                            <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Travel Routes Section -->
+    <div class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-gray-900">Rute Wisata Populer</h2>
+                <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Temukan rute perjalanan yang telah kami rancang khusus untuk pengalaman terbaik</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Route Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover-scale">
+                    <img src="https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Jawa Heritage" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">Jawa Heritage</h3>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded-full">7 Hari</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">Jelajahi warisan budaya Jawa dari Yogyakarta hingga Surakarta</p>
+                        
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt text-indigo-500 mr-2"></i>
+                            <span>Yogyakarta - Borobudur - Prambanan - Solo</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-indigo-600 font-medium">Rp2.5jt</span>
+                                <span class="text-gray-400 text-sm ml-1">/orang</span>
+                            </div>
+                            <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">
+                                Lihat Detail <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Route Card 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover-scale">
+                    <img src="https://images.unsplash.com/photo-1506477331477-33d5d8b3dc85?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Bali Escape" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">Bali Escape</h3>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded-full">5 Hari</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">Pengalaman lengkap Bali dari pantai hingga budaya</p>
+                        
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt text-indigo-500 mr-2"></i>
+                            <span="Kuta - Ubud - Uluwatu - Nusa Penida</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-indigo-600 font-medium">Rp3.8jt</span>
+                                <span class="text-gray-400 text-sm ml-1">/orang</span>
+                            </div>
+                            <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">
+                                Lihat Detail <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Route Card 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover-scale">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sumatra Adventure" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">Sumatra Adventure</h3>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-1 rounded-full">10 Hari</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">Petualangan alam Sumatera dari Danau Toba hingga Bukittinggi</p>
+                        
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <i class="fas fa-map-marker-alt text-indigo-500 mr-2"></i>
+                            <span>Medan - Danau Toba - Bukit Lawang - Bukittinggi</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-indigo-600 font-medium">Rp4.2jt</span>
+                                <span class="text-gray-400 text-sm ml-1">/orang</span>
+                            </div>
+                            <button class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">
+                                Lihat Detail <i class="fas fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center">
+                <button class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Lihat Semua Rute
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Itinerary Planner -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-bold text-gray-900">Rencanakan Itinerary Anda</h2>
+            <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Buat rencana perjalanan personal sesuai dengan preferensi Anda</p>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Mulai Rencanakan</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="destination" class="block text-sm font-medium text-gray-700 mb-1">Destinasi Utama</label>
+                            <select id="destination" name="destination" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option>Pilih Destinasi</option>
+                                <option>Bali</option>
+                                <option>Yogyakarta</option>
+                                <option>Lombok</option>
+                                <option>Raja Ampat</option>
+                                <option>Jakarta</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="start-date" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Mulai</label>
+                            <input type="date" id="start-date" name="start-date" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            </div>
+                            
+                            <div>
+                                <label for="end-date" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Selesai</label>
+                                <input type="date" id="end-date" name="end-date" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="travelers" class="block text-sm font-medium text-gray-700 mb-1">Jumlah Traveler</label>
+                            <select id="travelers" name="travelers" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option>1 Orang</option>
+                                <option>2 Orang</option>
+                                <option selected>3-5 Orang</option>
+                                <option>6-10 Orang</option>
+                                <option>10+ Orang</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Aktivitas yang Disukai</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" class="preference-chip active-preference px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                                    <i class="fas fa-umbrella-beach mr-1"></i> Pantai
+                                </button>
+                                <button type="button" class="preference-chip px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    <i class="fas fa-utensils mr-1"></i> Kuliner
+                                </button>
+                                <button type="button" class="preference-chip px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    <i class="fas fa-hiking mr-1"></i> Trekking
+                                </button>
+                                <button type="button" class="preference-chip px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    <i class="fas fa-camera mr-1"></i> Fotografi
+                                </button>
+                                <button type="button" class="preference-chip px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    <i class="fas fa-shopping-bag mr-1"></i> Belanja
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md font-medium transition duration-150 ease-in-out">
+                        Buat Itinerary
+                    </button>
+                </div>
+                
+                <div class="md:w-1/2 bg-gray-50 p-8 flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-route text-6xl text-indigo-400 mb-4 animate-pulse-slow"></i>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Itinerary Personal</h3>
+                        <p class="text-gray-500 mb-6">Buat rencana perjalanan yang sesuai dengan gaya liburan Anda</p>
+                        <img src="https://illustrations.popsy.co/amber/directions.svg" alt="Itinerary illustration" class="w-48 h-48 mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Preferences Section -->
+    <div class="bg-indigo-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-gray-900">Preferensi Perjalanan Anda</h2>
+                <p class="mt-2 text-gray-600 max-w-2xl mx-auto">TourPath akan menyesuaikan rekomendasi berdasarkan preferensi Anda</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-3xl mx-auto">
+                <div class="p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Budget Preference -->
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-wallet text-indigo-500 mr-2"></i> Anggaran
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input id="budget-low" name="budget" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" checked>
+                                    <label for="budget-low" class="ml-3 block text-sm font-medium text-gray-700">Ekonomis (Rp500rb - Rp1.5jt)</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="budget-medium" name="budget" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="budget-medium" class="ml-3 block text-sm font-medium text-gray-700">Menengah (Rp1.5jt - Rp3jt)</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="budget-high" name="budget" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="budget-high" class="ml-3 block text-sm font-medium text-gray-700">Mewah (Rp3jt+)</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Travel Style -->
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-suitcase-rolling text-indigo-500 mr-2"></i> Gaya Perjalanan
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input id="style-backpacker" name="travel-style" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" checked>
+                                    <label for="style-backpacker" class="ml-3 block text-sm font-medium text-gray-700">Backpacker</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="style-family" name="travel-style" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="style-family" class="ml-3 block text-sm font-medium text-gray-700">Keluarga</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="style-luxury" name="travel-style" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="style-luxury" class="ml-3 block text-sm font-medium text-gray-700">Mewah</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pace Preference -->
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-tachometer-alt text-indigo-500 mr-2"></i> Kecepatan
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input id="pace-slow" name="pace" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" checked>
+                                    <label for="pace-slow" class="ml-3 block text-sm font-medium text-gray-700">Santai</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="pace-medium" name="pace" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="pace-medium" class="ml-3 block text-sm font-medium text-gray-700">Sedang</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="pace-fast" name="pace" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="pace-fast" class="ml-3 block text-sm font-medium text-gray-700">Cepat</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Food Preference -->
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                <i class="fas fa-utensils text-indigo-500 mr-2"></i> Preferensi Makanan
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input id="food-local" name="food" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" checked>
+                                    <label for="food-local" class="ml-3 block text-sm font-medium text-gray-700">Makanan Lokal</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="food-international" name="food" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="food-international" class="ml-3 block text-sm font-medium text-gray-700">Internasional</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="food-vegetarian" name="food" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="food-vegetarian" class="ml-3 block text-sm font-medium text-gray-700">Vegetarian</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex justify-end">
+                        <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3">
+                            Reset
+                        </button>
+                        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Simpan Preferensi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl font-bold text-gray-900">Apa Kata Mereka</h2>
+            <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Pengalaman nyata dari traveler yang menggunakan TourPath</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">AD</div>
+                    <div class="ml-4">
+                        <h4 class="font-medium text-gray-900">Andi Dwi</h4>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"TourPath membantu saya merencanakan liburan ke Bali dengan sempurna. Itinerary yang diberikan sangat sesuai dengan budget dan preferensi saya."</p>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">SR</div>
+                    <div class="ml-4">
+                        <h4 class="font-medium text-gray-900">Sarah R.</h4>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"Rute wisata yang direkomendasikan sangat bagus! Kami sekeluarga bisa menikmati Yogyakarta tanpa harus pusing memikirkan transportasi dan tempat makan."</p>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">FP</div>
+                    <div class="ml-4">
+                        <h4 class="font-medium text-gray-900">Fajar P.</h4>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"Saya suka fitur itinerary planner-nya. B bisa menyesuaikan dengan budget dan waktu yang saya miliki. Liburan ke Lombok jadi lebih terencana!"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-indigo-700">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                <div>
+                    <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                        <span class="block">Siap memulai petualangan Anda?</span>
+                    </h2>
+                    <p class="mt-3 max-w-3xl text-lg leading-6 text-indigo-200">
+                        Daftar sekarang dan dapatkan rekomendasi perjalanan yang dipersonalisasi khusus untuk Anda.
+                    </p>
+                    <div class="mt-8 sm:flex">
+                        <div class="rounded-md shadow">
+                            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                                Daftar Sekarang
+                            </a>
+                        </div>
+                        <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 md:py-4 md:text-lg md:px-10">
+                                Lihat Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0">
+                    <img class="w-full rounded-lg shadow-xl" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Travel adventure">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">TourPath</h3>
+                    <p class="text-gray-300 text-sm">Platform perencanaan perjalanan yang membantu Anda menemukan pengalaman wisata terbaik.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Perusahaan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Tentang Kami</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Karir</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Blog</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Bantuan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Pusat Bantuan</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Ikuti Kami</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="text-white text-sm font-medium mb-2">Unduh Aplikasi</h4>
+                        <div class="flex space-x-2">
+                            <a href="#" class="flex items-center justify-center w-32 h-10 bg-black rounded-md">
+                                <i class="fab fa-apple text-white mr-2"></i>
+                                <span class="text-white text-xs">App Store</span>
+                            </a>
+                            <a href="#" class="flex items-center justify-center w-32 h-10 bg-black rounded-md">
+                                <i class="fab fa-google-play text-white mr-2"></i>
+                                <span class="text-white text-xs">Play Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm text-center md:text-left">
+                    © 2023 TourPath. Seluruh hak cipta dilindungi.
+                </p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Indonesia</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">English</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle user dropdown menu
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userDropdown = document.getElementById('user-dropdown');
+            
+            userMenuButton.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !expanded);
+                userDropdown.classList.toggle('hidden');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+                    userMenuButton.setAttribute('aria-expanded', 'false');
+                    userDropdown.classList.add('hidden');
+                }
+            });
+            
+            // Toggle preference chips
+            const preferenceChips = document.querySelectorAll('.preference-chip');
+            preferenceChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    this.classList.toggle('active-preference');
+                    this.classList.toggle('bg-indigo-100');
+                    this.classList.toggle('text-indigo-800');
+                    this.classList.toggle('bg-indigo-600');
+                    this.classList.toggle('text-white');
+                });
+            });
+            
+            // Simple form validation for itinerary planner
+            const itineraryForm = document.querySelector('.bg-white.rounded-xl.shadow-md.overflow-hidden form');
+            if (itineraryForm) {
+                itineraryForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const destination = document.getElementById('destination').value;
+                    const startDate = document.getElementById('start-date').value;
+                    const endDate = document.getElementById('end-date').value;
+                    
+                    if (destination === 'Pilih Destinasi') {
+                        alert('Silakan pilih destinasi utama');
+                        return;
+                    }
+                    
+                    if (!startDate || !endDate) {
+                        alert('Silakan isi tanggal mulai dan selesai');
+                        return;
+                    }
+                    
+                    alert(`Itinerary untuk ${destination} sedang diproses!`);
+                });
+            }
+            
+            // Save preferences
+            const savePrefsBtn = document.querySelector('.bg-indigo-50 button:last-child');
+            if (savePrefsBtn) {
+                savePrefsBtn.addEventListener('click', function() {
+                    alert('Preferensi Anda telah disimpan!');
+                });
+            }                    // Logout functionality
+                    const logoutBtn = document.querySelector('#user-dropdown a:last-child');
+                    if (logoutBtn) {
+                        logoutBtn.addEventListener('click', function(e) {
+                            if (!confirm('Apakah Anda yakin ingin keluar?')) {
+                                e.preventDefault();
+                            }
+                        });
+                    }
+        });
+    </script>
+</body>
+</html>
