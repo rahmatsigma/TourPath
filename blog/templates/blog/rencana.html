@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rencana Perjalanan - TourPat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .tab-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .destination-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-white border-r border-gray-200">
+                <div class="flex items-center justify-center h-16 px-4 bg-blue-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marked-alt text-white text-2xl mr-2"></i>
+                        <span class="text-white text-xl font-bold">TourPat</span>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-grow pt-5 overflow-y-auto">
+                    <div class="px-4 space-y-1">
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-home mr-3 text-gray-500"></i>
+                            Dashboard
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg">
+                            <i class="fas fa-calendar-alt mr-3 text-blue-500"></i>
+                            Rencana Perjalanan
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-map-marker-alt mr-3 text-gray-500"></i>
+                            Destinasi
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-wallet mr-3 text-gray-500"></i>
+                            Anggaran
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-3 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-cog mr-3 text-gray-500"></i>
+                            Pengaturan
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-gray-200">
+                    <div class="flex items-center">
+                        <img class="w-10 h-10 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User profile">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-700">Sarah Johnson</p>
+                            <p class="text-xs font-medium text-gray-500">sarah@example.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <!-- Top navigation -->
+            <div class="flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200">
+                <div class="flex items-center md:hidden">
+                    <button class="text-gray-500 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="flex items-center">
+                    <h1 class="text-lg font-semibold text-gray-800">Rencana Perjalanan</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-500 focus:outline-none">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center focus:outline-none">
+                            <img class="w-8 h-8 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User profile">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content area -->
+            <div class="flex-1 overflow-auto custom-scrollbar">
+                <div class="p-6">
+                    <div class="max-w-6xl mx-auto">
+                        <!-- Header with create button -->
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h2 class="text-2xl font-bold text-gray-800">Rencana Perjalanan Anda</h2>
+                                <p class="text-gray-600">Kelola dan buat rencana perjalanan personal Anda</p>
+                            </div>
+                            <button class="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <i class="fas fa-plus mr-2"></i> Buat Rencana Baru
+                            </button>
+                        </div>
+
+                        <!-- Tabs -->
+                        <div class="border-b border-gray-200 mb-8">
+                            <nav class="flex space-x-8">
+                                <button class="py-4 px-1 tab-active">
+                                    <span class="text-sm">Semua Rencana</span>
+                                </button>
+                                <button class="py-4 px-1 text-gray-500 hover:text-gray-700">
+                                    <span class="text-sm">Akan Datang</span>
+                                </button>
+                                <button class="py-4 px-1 text-gray-500 hover:text-gray-700">
+                                    <span class="text-sm">Selesai</span>
+                                </button>
+                                <button class="py-4 px-1 text-gray-500 hover:text-gray-700">
+                                    <span class="text-sm">Dibatalkan</span>
+                                </button>
+                            </nav>
+                        </div>
+
+                        <!-- Travel plans grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                            <!-- Plan Card 1 -->
+                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Bali" class="w-full h-48 object-cover">
+                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
+                                        <i class="fas fa-heart text-red-500"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-lg text-gray-800">Liburan Romantis di Bali</h3>
+                                            <p class="text-gray-500 text-sm flex items-center">
+                                                <i class="fas fa-calendar-day mr-1"></i> 15 - 20 Juli 2023
+                                            </p>
+                                        </div>
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Aktif</span>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="text-gray-600">Progress</span>
+                                            <span class="font-medium">65%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <div class="flex items-center">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Partner" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
+                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
+                                        </div>
+                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Plan Card 2 -->
+                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1535406208535-1429839cfd13?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Yogyakarta" class="w-full h-48 object-cover">
+                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
+                                        <i class="far fa-heart text-gray-500"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-lg text-gray-800">Petualangan di Yogyakarta</h3>
+                                            <p class="text-gray-500 text-sm flex items-center">
+                                                <i class="fas fa-calendar-day mr-1"></i> 5 - 10 Agustus 2023
+                                            </p>
+                                        </div>
+                                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Draft</span>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="text-gray-600">Progress</span>
+                                            <span class="font-medium">30%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <div class="flex items-center">
+                                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Friend 1" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
+                                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Friend 2" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
+                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
+                                        </div>
+                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                                            Lanjutkan
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Plan Card 3 -->
+                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1527631746610-b25700a1cd14?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Lombok" class="w-full h-48 object-cover">
+                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
+                                        <i class="fas fa-heart text-red-500"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-lg text-gray-800">Eksplorasi Lombok</h3>
+                                            <p class="text-gray-500 text-sm flex items-center">
+                                                <i class="fas fa-calendar-day mr-1"></i> 1 - 7 September 2023
+                                            </p>
+                                        </div>
+                                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Baru</span>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="text-gray-600">Progress</span>
+                                            <span class="font-medium">15%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 15%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <div class="flex items-center">
+                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
+                                        </div>
+                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                                            Mulai Rencanakan
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Plan Card 4 -->
+                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Raja Ampat" class="w-full h-48 object-cover">
+                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
+                                        <i class="far fa-heart text-gray-500"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-lg text-gray-800">Menyelam di Raja Ampat</h3>
+                                            <p class="text-gray-500 text-sm flex items-center">
+                                                <i class="fas fa-calendar-day mr-1"></i> 10 - 17 Juni 2023
+                                            </p>
+                                        </div>
+                                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">Selesai</span>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="text-gray-600">Progress</span>
+                                            <span class="font-medium">100%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-500 h-2 rounded-full progress-bar" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <div class="flex items-center">
+                                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Friend" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
+                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
+                                        </div>
+                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                                            Lihat Review
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Plan Card 5 -->
+                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Bromo" class="w-full h-48 object-cover">
+                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
+                                        <i class="far fa-heart text-gray-500"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h3 class="font-bold text-lg text-gray-800">Sunrise di Bromo</h3>
+                                            <p class="text-gray-500 text-sm flex items-center">
+                                                <i class="fas fa-calendar-day mr-1"></i> 20 - 22 Mei 2023
+                                            </p>
+                                        </div>
+                                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Dibatalkan</span>
+                                    </div>
+                                    <div class="mt-4">
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="text-gray-600">Progress</span>
+                                            <span class="font-medium">45%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-red-500 h-2 rounded-full progress-bar" style="width: 45%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 flex justify-between items-center">
+                                        <div class="flex items-center">
+                                            <img src="https://randomuser.me/api/portraits/men/18.jpg" alt="Friend 1" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
+                                            <img src="https://randomuser.me/api/portraits/women/27.jpg" alt="Friend 2" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
+                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
+                                        </div>
+                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
+                                            Buat Ulang
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add New Plan Card -->
+                            <div class="bg-white rounded-lg shadow overflow-hidden border-2 border-dashed border-gray-300 hover:border-blue-500 transition-all duration-300 flex flex-col items-center justify-center">
+                                <div class="p-6 text-center">
+                                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mb-4">
+                                        <i class="fas fa-plus text-blue-500"></i>
+                                    </div>
+                                    <h3 class="text-lg font-medium text-gray-900 mb-1">Buat Rencana Baru</h3>
+                                    <p class="text-gray-500 text-sm">Mulai petualangan baru Anda</p>
+                                    <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        Tambah Rencana
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="flex items-center justify-between border-t border-gray-200 pt-4">
+                            <div>
+                                <p class="text-sm text-gray-700">
+                                    Menampilkan <span class="font-medium">1</span> sampai <span class="font-medium">6</span> dari <span class="font-medium">12</span> rencana
+                                </p>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    Sebelumnya
+                                </button>
+                                <button class="relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600">
+                                    1
+                                </button>
+                                <button class="relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    2
+                                </button>
+                                <button class="relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                    Selanjutnya
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.border-b button');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('tab-active', 'text-blue-600'));
+                    tabs.forEach(t => t.classList.add('text-gray-500', 'hover:text-gray-700'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.remove('text-gray-500', 'hover:text-gray-700');
+                    this.classList.add('tab-active', 'text-blue-600');
+                });
+            });
+
+            // Animation for progress bars
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

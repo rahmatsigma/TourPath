@@ -45,6 +45,14 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
+@login_required
+def settings_view(request):
+    return render(request, 'blog/setting.html')
+
+@login_required
+def rencana_view(request):
+    return render(request, 'blog/rencana.html')
+
 def logout_view(request):
     logout(request)
     return redirect('login')

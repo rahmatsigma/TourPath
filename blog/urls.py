@@ -10,4 +10,6 @@ urlpatterns = [
     path('home/', views.index, name='index'),
     path('blog/', views.post_list, name='post_list'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
+    path('settings/', views.settings_view, name='settings'),
+    path('rencana/', views.rencana_view, name='rencana'),
 ]

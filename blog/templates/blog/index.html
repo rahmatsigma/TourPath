@@ -37,10 +37,9 @@
                         </div>
 
                         <!-- Dropdown menu, show/hide based on menu state -->
-                        <div id="user-dropdown" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                        <div id="user-dropdown" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">                            <a href="{% url 'settings' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                 <i class="fas fa-user-cog mr-2 text-gray-500"></i> Settings
-                            </a>                            <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                            </a><a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                 <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Log out
                             </a>
                         </div>
@@ -611,7 +610,6 @@
                     <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Perusahaan</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-300 hover:text-white text-sm">Tentang Kami</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white text-sm">Karir</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white text-sm">Blog</a></li>
                         <li><a href="#" class="text-gray-300 hover:text-white text-sm">Kontak</a></li>
                     </ul>
@@ -632,29 +630,20 @@
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white">
                             <i class="fab fa-facebook-f"></i>
+                            <a href="https://www.facebook.com/share/1541fxhprB/"    >
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/rahmatsigma/TourPath" class="text-gray-400 hover:text-white">
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white">
                             <i class="fab fa-instagram"></i>
+                            <a href="https://www.instagram.com/rrahmat_prt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-white">
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white">
                             <i class="fab fa-youtube"></i>
+                            <a href="https://youtube.com/@riskirahmattillahpratama?si=mxgMiOMxrSEW7FcR" class="text-gray-400 hover:text-white">
                         </a>
-                    </div>
-                    <div class="mt-4">
-                        <h4 class="text-white text-sm font-medium mb-2">Unduh Aplikasi</h4>
-                        <div class="flex space-x-2">
-                            <a href="#" class="flex items-center justify-center w-32 h-10 bg-black rounded-md">
-                                <i class="fab fa-apple text-white mr-2"></i>
-                                <span class="text-white text-xs">App Store</span>
-                            </a>
-                            <a href="#" class="flex items-center justify-center w-32 h-10 bg-black rounded-md">
-                                <i class="fab fa-google-play text-white mr-2"></i>
-                                <span class="text-white text-xs">Play Store</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -663,10 +652,10 @@
                 <p class="text-gray-400 text-sm text-center md:text-left">
                     © 2023 TourPath. Seluruh hak cipta dilindungi.
                 </p>
-                <div class="mt-4 md:mt-0 flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white text-sm">Indonesia</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm">English</a>
-                </div>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                    <span class="mx-2 text-gray-600">|</span>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
             </div>
         </div>
     </footer>
