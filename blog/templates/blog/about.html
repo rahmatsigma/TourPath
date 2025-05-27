@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourPath | About</title>    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"
+</head>
+<body>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-route text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">TourPath</span>
+                    </div>                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="{% url 'index' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>
+                        <a href="{% url 'about' %}" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Blog</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>                                <div class="flex items-center">
+                                    <span class="mr-3 text-gray-700 font-medium">{{ user.username }}</span>
+                                    <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">{{ user.username|first|upper }}</div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Dropdown menu, show/hide based on menu state -->
+                        <div id="user-dropdown" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">                            <a href="{% url 'settings' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                <i class="fas fa-user-cog mr-2 text-gray-500"></i> Settings
+                            </a><a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Tentang TourPath</h1>
+                    <p class="text-xl mb-8 opacity-90">Platform perencanaan perjalanan wisata yang mengubah cara Anda menjelajahi dunia.</p>
+                    <div class="flex space-x-4">
+                        <button class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition duration-300">
+                            Mulai Rencanakan
+                        </button>
+                        <button class="border-2 border-white hover:bg-white hover:bg-opacity-10 px-6 py-3 rounded-lg font-semibold transition duration-300">
+                            Lihat Demo
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Travel Planning" 
+                         class="rounded-xl shadow-2xl w-full max-w-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Cerita Kami</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    TourPath lahir dari kecintaan kami terhadap petualangan dan keinginan untuk membuat perencanaan perjalanan menjadi lebih mudah dan menyenangkan.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Team working" 
+                         class="rounded-lg shadow-lg w-full">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Perjalanan Kami</h3>
+                    <p class="text-gray-600 mb-6">
+                        Didirikan pada tahun 2018 oleh sekelompok pecinta perjalanan yang frustasi dengan kompleksitas merencanakan liburan yang sempurna. Kami menyadari bahwa banyak orang menghabiskan waktu berjam-jam hanya untuk merencanakan rute, memesan akomodasi, dan mencari aktivitas yang sesuai.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Dengan latar belakang teknologi dan passion untuk traveling, kami menciptakan TourPath - sebuah platform yang menggabungkan kecerdasan buatan dengan pengetahuan lokal untuk menciptakan pengalaman perjalanan yang tak terlupakan.
+                    </p>
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                        <p class="text-blue-800 font-medium">
+                            <i class="fas fa-quote-left text-blue-400 mr-2"></i>
+                            Misi kami adalah memberdayakan setiap traveler untuk menciptakan petualangan yang sempurna tanpa stres dan kerumitan yang tidak perlu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Misi & Nilai Kami</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Kami berkomitmen untuk memberikan pengalaman terbaik dalam setiap aspek perjalanan Anda.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-8 feature-card transition duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-compass text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Mempermudah Perencanaan</h3>
+                    <p class="text-gray-600">
+                        Kami menyederhanakan proses perencanaan dengan alat yang intuitif dan rekomendasi yang dipersonalisasi berdasarkan preferensi Anda.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-8 feature-card transition duration-300">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Wisata Berkelanjutan</h3>
+                    <p class="text-gray-600">
+                        Kami mempromosikan praktik wisata yang bertanggung jawab dan mendukung komunitas lokal di setiap destinasi.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md p-8 feature-card transition duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Pengalaman Personal</h3>
+                    <p class="text-gray-600">
+                        Setiap perjalanan dirancang khusus untuk Anda, mencerminkan gaya, anggaran, dan minat perjalanan unik Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Keunggulan TourPath</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Mengapa ribuan traveler mempercayai TourPath untuk merencanakan petualangan mereka
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Rute Cerdas</h3>
+                            <p class="mt-2 text-gray-600">
+                                Algoritme kami menganalisis jutaan rute untuk menemukan jalur optimal berdasarkan waktu, anggaran, dan preferensi Anda.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Penghematan Biaya</h3>
+                            <p class="mt-2 text-gray-600">
+                                Sistem kami secara otomatis mencari penawaran terbaik dan membandingkan harga di berbagai platform untuk menghemat anggaran Anda.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Komunitas Traveler</h3>
+                            <p class="mt-2 text-gray-600">
+                                Bergabunglah dengan komunitas kami untuk berbagi pengalaman, tips, dan rekomendasi dari traveler lain di seluruh dunia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Akses Mobile</h3>
+                            <p class="mt-2 text-gray-600">
+                                Aplikasi kami memungkinkan Anda mengakses rencana perjalanan di mana saja, bahkan tanpa koneksi internet.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Dukungan 24/7</h3>
+                            <p class="mt-2 text-gray-600">
+                                Tim dukungan kami siap membantu kapan saja, di mana saja, dalam berbagai bahasa.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Keamanan Data</h3>
+                            <p class="mt-2 text-gray-600">
+                                Kami menggunakan enkripsi tingkat tinggi untuk melindungi data pribadi dan pembayaran Anda.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tim Kami</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Orang-orang berbakat di balik kesuksesan TourPath
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Founder" 
+                             class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">Andi Wijaya</h3>
+                        <p class="text-blue-600 mb-3">Founder & CEO</p>
+                        <p class="text-gray-600">
+                            Seorang travel enthusiast dengan pengalaman lebih dari 15 tahun di industri pariwisata dan teknologi.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-blue-600">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-blue-400">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="CTO" 
+                             class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">Sarah Dewi</h3>
+                        <p class="text-blue-600 mb-3">Chief Technology Officer</p>
+                        <p class="text-gray-600">
+                            Ahli dalam pengembangan AI dengan spesialisasi dalam sistem rekomendasi dan optimasi rute.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-blue-600">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-blue-400">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Marketing" 
+                             class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">Budi Santoso</h3>
+                        <p class="text-blue-600 mb-3">Head of Marketing</p>
+                        <p class="text-gray-600">
+                            Pakar branding digital dengan passion untuk menciptakan pengalaman pelanggan yang luar biasa.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-blue-600">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-blue-400">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="py-6">
+                    <div class="text-4xl font-bold mb-2">50K+</div>
+                    <div class="text-blue-100">Pengguna Aktif</div>
+                </div>
+                <div class="py-6">
+                    <div class="text-4xl font-bold mb-2">120+</div>
+                    <div class="text-blue-100">Destinasi</div>
+                </div>
+                <div class="py-6">
+                    <div class="text-4xl font-bold mb-2">95%</div>
+                    <div class="text-blue-100">Kepuasan Pengguna</div>
+                </div>
+                <div class="py-6">
+                    <div class="text-4xl font-bold mb-2">24/7</div>
+                    <div class="text-blue-100">Dukungan Pelanggan</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-blue-600 text-white p-12 flex items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-6">Siap Memulai Petualangan Anda?</h2>
+                            <p class="mb-8 opacity-90">
+                                Bergabunglah dengan ribuan traveler yang telah mempercayai TourPath untuk merencanakan perjalanan impian mereka.
+                            </p>
+                            <div class="flex space-x-4">
+                                <button class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition duration-300">
+                                    Daftar Sekarang
+                                </button>
+                                <button class="border-2 border-white hover:bg-white hover:bg-opacity-10 px-6 py-3 rounded-lg font-semibold transition duration-300">
+                                    Pelajari Lebih Lanjut
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="Travel Adventure" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-route text-blue-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">TourPath</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Platform perencanaan perjalanan wisata terdepan di Indonesia, membantu Anda menemukan dan merencanakan petualangan sempurna.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Perusahaan</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Karir</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Mitra</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Dukungan</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pusat Bantuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Kontak</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-500"></i>
+                            <span>Jl. Perjalanan No. 123, Jakarta Selatan, Indonesia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-500"></i>
+                            <span>+62 21 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-500"></i>
+                            <span>info@tourpath.id</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; 2023 TourPath. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Syarat Layanan</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Peta Situs</a>
+                </div>
+            </div>
+        </div>
+    </footer>    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dropdown menu functionality
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userDropdown = document.getElementById('user-dropdown');
+            
+            if (userMenuButton && userDropdown) {
+                userMenuButton.addEventListener('click', function() {
+                    const expanded = userMenuButton.getAttribute('aria-expanded') === 'true';
+                    userMenuButton.setAttribute('aria-expanded', !expanded);
+                    userDropdown.classList.toggle('hidden');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+                        userMenuButton.setAttribute('aria-expanded', 'false');
+                        userDropdown.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Animation for stats counter
+            const stats = document.querySelectorAll('.text-4xl');
+            const speed = 200;
+            
+            stats.forEach(stat => {
+                const target = +stat.innerText.replace(/\D/g, '');
+                const count = +stat.innerText;
+                let start = 0;
+                
+                const updateCount = () => {
+                    const increment = target / speed;
+                    if (start < target) {
+                        stat.innerText = Math.ceil(start + increment);
+                        start += increment;
+                        setTimeout(updateCount, 1);
+                    } else {
+                        stat.innerText = target;
+                    }
+                };
+                
+                // Start counting when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        updateCount();
+                        observer.unobserve(stat);
+                    }
+                });
+                
+                observer.observe(stat);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -12,4 +12,6 @@ urlpatterns = [
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
     path('settings/', views.settings_view, name='settings'),
     path('rencana/', views.rencana_view, name='rencana'),
+    path('delete-account/', views.delete_account, name='delete_account'),
+    path('about/', views.about_view, name='about'),
 ]

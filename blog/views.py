@@ -47,12 +47,25 @@ def post_detail(request, pk):
 
 @login_required
 def settings_view(request):
-    return render(request, 'blog/setting.html')
+    return render(request, 'blog/setting.html', {'user': request.user})
 
 @login_required
 def rencana_view(request):
     return render(request, 'blog/rencana.html')
 
+@login_required
+def about_view(request):
+    return render(request, 'blog/about.html')
+
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        logout(request)
+        user.delete()
+        return redirect('login')
+    return redirect('settings')

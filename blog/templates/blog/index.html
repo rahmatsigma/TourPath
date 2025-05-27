@@ -18,8 +18,7 @@
                         <span class="text-xl font-bold text-indigo-600">TourPath</span>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>
-                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>                        <a href="{% url 'about' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
                         <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Blog</a>
                         <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
                     </div>
@@ -28,10 +27,9 @@
                     <div class="ml-3 relative">
                         <div>
                             <button type="button" class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                <span class="sr-only">Open user menu</span>
-                                <div class="flex items-center">
-                                    <span class="mr-3 text-gray-700 font-medium">Rahmat</span>
-                                    <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">R</div>
+                                <span class="sr-only">Open user menu</span>                                <div class="flex items-center">
+                                    <span class="mr-3 text-gray-700 font-medium">{{ user.username }}</span>
+                                    <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">{{ user.username|first|upper }}</div>
                                 </div>
                             </button>
                         </div>
@@ -562,37 +560,6 @@
                     </div>
                 </div>
                 <p class="text-gray-600">"Saya suka fitur itinerary planner-nya. B bisa menyesuaikan dengan budget dan waktu yang saya miliki. Liburan ke Lombok jadi lebih terencana!"</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="bg-indigo-700">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-                <div>
-                    <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                        <span class="block">Siap memulai petualangan Anda?</span>
-                    </h2>
-                    <p class="mt-3 max-w-3xl text-lg leading-6 text-indigo-200">
-                        Daftar sekarang dan dapatkan rekomendasi perjalanan yang dipersonalisasi khusus untuk Anda.
-                    </p>
-                    <div class="mt-8 sm:flex">
-                        <div class="rounded-md shadow">
-                            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
-                                Daftar Sekarang
-                            </a>
-                        </div>
-                        <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 md:py-4 md:text-lg md:px-10">
-                                Lihat Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-12 lg:mt-0">
-                    <img class="w-full rounded-lg shadow-xl" src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Travel adventure">
-                </div>
             </div>
         </div>
     </div>
