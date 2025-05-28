@@ -18,8 +18,9 @@
                         <span class="text-xl font-bold text-indigo-600">TourPath</span>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>                        <a href="{% url 'about' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
-                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Blog</a>
+                        <a href="{% url 'index' %}" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>                 
+                        <a href="{% url 'destinasi' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Destinasi</a>
+                        <a href="{% url 'about' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
                         <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
                     </div>
                 </div>
@@ -94,9 +95,6 @@
                     <button type="button" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-indigo-700">
                         <i class="fas fa-archway mr-1"></i> Budaya
                     </button>
-                    <button type="button" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-indigo-700">
-                        <i class="fas fa-utensils mr-1"></i> Kuliner
-                    </button>
                 </div>
             </div>
         </div>
@@ -104,11 +102,9 @@
 
     <!-- Popular Destinations -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold text-gray-900">Destinasi Populer</h2>
-            <a href="#" class="text-indigo-600 hover:text-indigo-500 font-medium">Lihat Semua <i class="fas fa-chevron-right ml-1"></i></a>
+        <div class="flex justify-between items-center mb-8">            <h2 class="text-2xl font-bold text-gray-900">Destinasi Populer</h2>
+            <a href="{% url 'destinasi' %}" class="text-indigo-600 hover:text-indigo-500 font-medium">Lihat Semua <i class="fas fa-chevron-right ml-1"></i></a>
         </div>
-        
         <div class="relative">
             <div class="flex space-x-4 overflow-x-auto pb-6 scroll-hidden">
                 <!-- Destination Card 1 -->
@@ -295,11 +291,10 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="mt-10 text-center">
-                <button class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <div class="mt-10 text-center">
+                <a href="{% url 'destinasi' %}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Lihat Semua Rute
-                </button>
+                </a>
             </div>
         </div>
     </div>

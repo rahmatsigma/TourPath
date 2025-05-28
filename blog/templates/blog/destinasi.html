@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourPath - Semua Destinasi Wisata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-route text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">TourPath</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="{% url 'index' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>
+                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Destinasi</a>
+                        <a href="{% url 'about' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <div class="flex items-center">
+                                    <span class="mr-3 text-gray-700 font-medium">{{ user.username }}</span>
+                                    <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">{{ user.username|first|upper }}</div>
+                                </div>
+                            </button>
+                        </div>
+                        <div id="user-dropdown" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
+                            <a href="{% url 'settings' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                <i class="fas fa-user-cog mr-2 text-gray-500"></i> Settings
+                            </a>
+                            <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>    <!-- Hero Section -->
+    <div class="hero-gradient text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Temukan Destinasi Wisata Impian Anda</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Jelajahi berbagai tempat wisata menarik di seluruh Indonesia dan dunia</p>
+            
+            <div class="max-w-2xl mx-auto relative">                <input type="text" placeholder="Cari destinasi wisata..." 
+                    class="w-full px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-lg search-box">
+                <button class="absolute right-2 top-2 bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Categories -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Kategori Destinasi</h2>
+            <div class="flex flex-wrap gap-3">                <button class="category-chip active-category px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                    Semua
+                </button>                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                    <i class="fas fa-mountain mr-2"></i>Alam
+                </button>
+                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                    <i class="fas fa-umbrella-beach mr-2"></i>Pantai
+                </button>
+                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                    <i class="fas fa-city mr-2"></i>Kota
+                </button>
+                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                    <i class="fas fa-monument mr-2"></i>Sejarah
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter and Sort -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <div class="text-gray-600 mb-4 md:mb-0">
+                Menampilkan <span class="font-bold">48</span> destinasi wisata
+            </div>
+            <div class="flex items-center">
+                <span class="mr-2 text-gray-600">Urutkan:</span>                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option>Populer</option>
+                    <option>Rating Tertinggi</option>
+                    <option>Harga Termurah</option>
+                    <option>Jarak Terdekat</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Destination Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Destination Card 1 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Bali" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.8
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Bali</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> Indonesia</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Pulau dewata dengan pantai eksotis, budaya kaya, dan alam menakjubkan.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp500.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Card 2 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1538970272646-f61fabb3bfdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" 
+                         alt="Raja Ampat" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.9
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Raja Ampat</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> Papua</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Surga bawah laut dengan keanekaragaman hayati terbaik di dunia.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp1.200.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Card 3 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1518544866330-95bdbc9e4124?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Bromo" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.7
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Gunung Bromo</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> Jawa Timur</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Pemandangan sunrise spektakuler di atas lautan pasir dan kawah aktif.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp350.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Card 4 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e021bf6379?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" 
+                         alt="Yogyakarta" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.6
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Yogyakarta</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> DIY</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Kota budaya dengan Candi Borobudur, Prambanan, dan keraton yang megah.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp400.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Card 5 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1589397055480-6d42a1a089c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Labuan Bajo" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.8
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Labuan Bajo</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> NTT</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Gerbang menuju Pulau Komodo dengan pemandangan laut yang memesona.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp850.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Card 6 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1566378246598-5b11a0b48686?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Lombok" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.7
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Lombok</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> NTB</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Pulau dengan pantai berpasir putih, Gunung Rinjani, dan Gili yang eksotis.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp700.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Card 7 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Tokyo" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.9
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Tokyo</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> Jepang</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Metropolis futuristik yang memadukan teknologi tinggi dengan tradisi kuno.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp5.000.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination Card 8 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden destination-card hover:shadow-lg transition">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Bangkok" class="w-full h-full object-cover destination-image">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full flex items-center">
+                        <i class="fas fa-star mr-1"></i> 4.5
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">Bangkok</h3>
+                        <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> Thailand</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Kota yang hidup 24 jam dengan kuil megah, pasar mengambang, dan kuliner lezat.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-indigo-600 font-bold">Rp3.500.000</span>
+                        <button class="text-indigo-600 hover:text-indigo-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+            <nav class="flex items-center space-x-1">
+                <button class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="px-4 py-1 rounded-lg bg-indigo-600 text-white">1</button>
+                <button class="px-4 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">2</button>
+                <button class="px-4 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">3</button>
+                <span class="px-2 text-gray-500">...</span>
+                <button class="px-4 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">8</button>
+                <button class="px-3 py-1 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </nav>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-map-marked-alt text-indigo-400 mr-2"></i> TourPath
+                    </h3>
+                    <p class="text-gray-400">Platform perencanaan perjalanan wisata terbaik untuk menemukan pengalaman liburan tak terlupakan.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Beranda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Destinasi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Rencana Perjalanan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Dukungan</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kontak Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Hubungi Kami</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-indigo-400"></i>
+                            <span class="text-gray-400">Jl. Wisata No. 123, Jakarta, Indonesia</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-indigo-400"></i>
+                            <span class="text-gray-400">+62 812 3456 7890</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-indigo-400"></i>
+                            <span class="text-gray-400">info@tourpath.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 TourPath. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple category filter functionality
+        document.querySelectorAll('.category-chip').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-chip').forEach(btn => {
+                    btn.classList.remove('active-category');
+                    btn.classList.add('bg-gray-200');                    btn.classList.remove('bg-indigo-600', 'text-white');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active-category');
+                this.classList.remove('bg-gray-200');
+                this.classList.add('bg-indigo-600', 'text-white');
+                
+                // In a real app, you would filter destinations here
+                console.log(`Filtering by: ${this.textContent.trim()}`);
+            });
+        });
+
+        // User menu dropdown toggle
+        const userMenuButton = document.getElementById('user-menu-button');
+        const userDropdown = document.getElementById('user-dropdown');
+        
+        userMenuButton.addEventListener('click', function() {
+            userDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!userMenuButton.contains(event.target) && !userDropdown.contains(event.target)) {
+                userDropdown.classList.add('hidden');
+            }
+        });
+
+        // Favorite button toggle
+        document.querySelectorAll('.destination-card button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas', 'text-red-500');
+                } else {
+                    icon.classList.remove('fas', 'text-red-500');
+                    icon.classList.add('far');
+                }
+            });
+        });
+
+        // Destination card click
+        document.querySelectorAll('.destination-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // In a real app, you would navigate to destination detail page
+                console.log(`Viewing details for: ${this.querySelector('h3').textContent}`);
+            });
+        });
+    </script>
+</body>
+</html>

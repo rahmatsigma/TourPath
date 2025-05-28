@@ -69,3 +69,7 @@ def delete_account(request):
         user.delete()
         return redirect('login')
     return redirect('settings')
+
+@login_required
+def destinasi_view(request):
+    return render(request, 'blog/destinasi.html')

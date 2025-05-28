@@ -14,4 +14,5 @@ urlpatterns = [
     path('rencana/', views.rencana_view, name='rencana'),
     path('delete-account/', views.delete_account, name='delete_account'),
     path('about/', views.about_view, name='about'),
+    path('destinasi/', views.destinasi_view, name='destinasi'),  # Adding destinasi URL pattern
 ]

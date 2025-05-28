@@ -18,8 +18,8 @@
                         <span class="text-xl font-bold text-indigo-600">TourPath</span>
                     </div>                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <a href="{% url 'index' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>
-                        <a href="{% url 'about' %}" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
-                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Blog</a>
+                        <a href="{% url 'destinasi' %}" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Destinasi</a>
+                        <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
                         <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
                     </div>
                 </div>
@@ -53,40 +53,14 @@
         </div>
     </nav>
 
-
-    <!-- Hero Section -->
-    <section class="hero-gradient text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="md:flex md:items-center md:justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Tentang TourPath</h1>
-                    <p class="text-xl mb-8 opacity-90">Platform perencanaan perjalanan wisata yang mengubah cara Anda menjelajahi dunia.</p>
-                    <div class="flex space-x-4">
-                        <button class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition duration-300">
-                            Mulai Rencanakan
-                        </button>
-                        <button class="border-2 border-white hover:bg-white hover:bg-opacity-10 px-6 py-3 rounded-lg font-semibold transition duration-300">
-                            Lihat Demo
-                        </button>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                         alt="Travel Planning" 
-                         class="rounded-xl shadow-2xl w-full max-w-md">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Our Story -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Cerita Kami</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tour Path</h2>
                 <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    TourPath lahir dari kecintaan kami terhadap petualangan dan keinginan untuk membuat perencanaan perjalanan menjadi lebih mudah dan menyenangkan.
+                    Selamat datang di TourPath - platform perencanaan perjalanan wisata yang mengubah cara Anda menjelajahi dunia. Kami percaya bahwa setiap perjalanan adalah cerita unik yang layak direncanakan dengan sempurna.
                 </p>
             </div>
             
@@ -245,19 +219,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">Keamanan Data</h3>
-                            <p class="mt-2 text-gray-600">
-                                Kami menggunakan enkripsi tingkat tinggi untuk melindungi data pribadi dan pembayaran Anda.
-                            </p>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -320,6 +282,52 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="CTO" 
+                             class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">GAJAH</h3>
+                        <p class="text-blue-600 mb-3">Chief Technology Officer</p>
+                        <p class="text-gray-600">
+                            Ahli dalam pengembangan AI dengan spesialisasi dalam sistem rekomendasi dan optimasi rute.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-blue-600">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-blue-400">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                             alt="CTO" 
+                             class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">KUCING</h3>
+                        <p class="text-blue-600 mb-3">Chief Technology Officer</p>
+                        <p class="text-gray-600">
+                            Ahli dalam pengembangan AI dengan spesialisasi dalam sistem rekomendasi dan optimasi rute.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-500 hover:text-blue-600">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-blue-400">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                     <div class="overflow-hidden h-64">
@@ -341,61 +349,6 @@
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="py-16 bg-blue-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 text-center">
-                <div class="py-6">
-                    <div class="text-4xl font-bold mb-2">50K+</div>
-                    <div class="text-blue-100">Pengguna Aktif</div>
-                </div>
-                <div class="py-6">
-                    <div class="text-4xl font-bold mb-2">120+</div>
-                    <div class="text-blue-100">Destinasi</div>
-                </div>
-                <div class="py-6">
-                    <div class="text-4xl font-bold mb-2">95%</div>
-                    <div class="text-blue-100">Kepuasan Pengguna</div>
-                </div>
-                <div class="py-6">
-                    <div class="text-4xl font-bold mb-2">24/7</div>
-                    <div class="text-blue-100">Dukungan Pelanggan</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-1/2 bg-blue-600 text-white p-12 flex items-center">
-                        <div>
-                            <h2 class="text-3xl font-bold mb-6">Siap Memulai Petualangan Anda?</h2>
-                            <p class="mb-8 opacity-90">
-                                Bergabunglah dengan ribuan traveler yang telah mempercayai TourPath untuk merencanakan perjalanan impian mereka.
-                            </p>
-                            <div class="flex space-x-4">
-                                <button class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition duration-300">
-                                    Daftar Sekarang
-                                </button>
-                                <button class="border-2 border-white hover:bg-white hover:bg-opacity-10 px-6 py-3 rounded-lg font-semibold transition duration-300">
-                                    Pelajari Lebih Lanjut
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2">
-                        <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                             alt="Travel Adventure" 
-                             class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
