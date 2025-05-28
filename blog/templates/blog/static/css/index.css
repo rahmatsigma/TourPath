@@ -57,7 +57,6 @@ body {
     color: white;
 }
 
-/* Dropdown animation */
 .dropdown-enter {
     opacity: 0;
     transform: translateY(-10px);

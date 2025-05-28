@@ -3,7 +3,8 @@ from django.utils import timezone
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post, UserProfile
+from django.http import JsonResponse
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -47,7 +48,19 @@ def post_detail(request, pk):
 
 @login_required
 def settings_view(request):
-    return render(request, 'blog/setting.html', {'user': request.user})
+    # Get or create user profile
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+    
+    if request.method == 'POST':
+        bio = request.POST.get('bio')
+        profile.bio = bio
+        profile.save()
+        return JsonResponse({'status': 'success'})
+    
+    context = {
+        'user_profile': profile
+    }
+    return render(request, 'blog/setting.html', context)
 
 @login_required
 def rencana_view(request):
