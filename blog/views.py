@@ -86,3 +86,6 @@ def delete_account(request):
 @login_required
 def destinasi_view(request):
     return render(request, 'blog/destinasi.html')
+
+def contact_view(request):
+    return render(request, 'blog/contact.html')

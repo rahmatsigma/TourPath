@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Tour Path</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-route text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">TourPath</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="{% url 'index' %}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Beranda</a>
+                        <a href="{% url 'destinasi' %}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Destinasi</a>
+                        <a href="{% url 'about' %}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                        <a href="#"
+                            class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button"
+                                class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <div class="flex items-center">
+                                    <span class="mr-3 text-gray-700 font-medium">{{ user.username }}</span>
+                                    <div
+                                        class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-medium">
+                                        {{ user.username|first|upper }}</div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div id="user-dropdown"
+                            class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
+                            <a href="{% url 'settings' %}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem">
+                                <i class="fas fa-user-cog mr-2 text-gray-500"></i> Settings
+                            </a>
+                            <a href="{% url 'logout' %}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem">
+                                <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-indigo-600 text-white">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                    Contact Us
+                </h1>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-indigo-100">
+                    Have questions about your travel plans? We're here to help!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Contact Form -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                        <input type="text" id="subject" name="subject" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Get in touch</h2>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-2xl text-indigo-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Location</h4>
+                            <p class="mt-1 text-gray-600">123 Travel Street, Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-phone text-2xl text-indigo-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Phone</h4>
+                            <p class="mt-1 text-gray-600">+62 123 456 7890</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-envelope text-2xl text-indigo-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Email</h4>
+                            <p class="mt-1 text-gray-600">info@tourpath.com</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-200">
+                        <h4 class="text-lg font-medium text-gray-900 mb-4">Follow us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-indigo-600">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-600">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-600">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-indigo-600">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126932.34651233468!2d106.75503529726561!3d-6.229728199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta!5e0!3m2!1sen!2sid!4v1625647641281!5m2!1sen!2sid" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-route text-indigo-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">TourPath</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Your trusted partner for travel planning in Indonesia.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'index' %}" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="{% url 'destinasi' %}" class="text-gray-400 hover:text-white">Destinations</a></li>
+                        <li><a href="{% url 'about' %}" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="space-y-2">
+                        <p class="text-gray-400">Subscribe to our newsletter</p>
+                        <form class="flex">
+                            <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <button class="px-4 py-2 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700">
+                <p class="text-center text-gray-400">
+                    © 2025 TourPath. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // User menu dropdown toggle
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userDropdown = document.getElementById('user-dropdown');
+            
+            if (userMenuButton && userDropdown) {
+                userMenuButton.addEventListener('click', function() {
+                    const expanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !expanded);
+                    userDropdown.classList.toggle('hidden');
+                });
+            }
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Add your form submission logic here
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
