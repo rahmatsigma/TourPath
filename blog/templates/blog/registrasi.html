@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TourPath | Daftar Akun</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <style>
+        body {
+            background-image: url('{% static "assets/Background.png" %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+    </style>
 </head>
-<body class="flex items-center justify-center p-4">
-    <div class="hidden md:block absolute top-10 left-10 w-32 h-32 rounded-full bg-indigo-200 opacity-70 animate-float"></div>
-    <div class="hidden md:block absolute bottom-20 right-20 w-40 h-40 rounded-full bg-purple-200 opacity-70 animate-float" style="animation-delay: 2s;"></div>
-    <div class="hidden md:block absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-blue-200 opacity-70 animate-float" style="animation-delay: 4s;"></div>
-
-    <div class="w-full max-w-md z-10">
+<body class="flex items-center justify-center p-4">    <div class="w-full max-w-md z-10">
         <div class="bg-white rounded-2xl p-8 card-shadow">
             <div class="flex justify-center mb-8">
                 <div class="flex items-center">
@@ -41,7 +44,7 @@
                     <label for="id_username" class="block text-sm font-medium text-gray-700">Username</label>
                     <div class="mt-1">
                         <input id="id_username" name="username" type="text" required 
-                               class="input-focus appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            class="input-focus appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
                     {% if form.username.errors %}
                     <p class="mt-2 text-sm text-red-600">{{ form.username.errors.0 }}</p>
@@ -52,7 +55,7 @@
                     <label for="id_password1" class="block text-sm font-medium text-gray-700">Password</label>
                     <div class="mt-1">
                         <input id="id_password1" name="password1" type="password" required
-                               class="input-focus appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            class="input-focus appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
                     {% if form.password1.errors %}
                     <p class="mt-2 text-sm text-red-600">{{ form.password1.errors.0 }}</p>
@@ -63,7 +66,7 @@
                     <label for="id_password2" class="block text-sm font-medium text-gray-700">Confirm Password</label>
                     <div class="mt-1">
                         <input id="id_password2" name="password2" type="password" required
-                               class="input-focus appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            class="input-focus appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
                     {% if form.password2.errors %}
                     <p class="mt-2 text-sm text-red-600">{{ form.password2.errors.0 }}</p>

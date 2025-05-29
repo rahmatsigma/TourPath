@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bantuan - TourPath: Planner Perjalanan Wisata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .active .accordion-content {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+        
+        .active .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">    <header class="bg-indigo-600 text-white shadow-md">
+        <div class="container mx-auto px-4 py-6">            <div class="flex justify-between items-center">                <div class="flex items-center space-x-4">
+                    <a href="{% url 'index' %}" class="flex items-center text-white hover:text-indigo-200 transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        
+                    </a>
+                    <h1 class="text-2xl font-bold">TourPath</h1>
+                </div>
+                <div class="flex items-center">
+                    <p class="text-sm opacity-80">Planner Perjalanan Wisata</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">        <h2 class="text-3xl font-bold text-center mb-8 text-indigo-600">Pusat Bantuan</h2>
+        
+        <div class="max-w-4xl mx-auto">
+            <!-- Bagian Bantuan -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2 flex items-center">
+                    <i class="fas fa-question-circle mr-3 text-indigo-500"></i> Pusat Bantuan
+                </h3>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700 mb-4">Selamat datang di Pusat Bantuan TourPath. Kami siap membantu Anda dalam menggunakan aplikasi perencanaan perjalanan wisata kami.</p>
+                    <p class="text-gray-700">Jika Anda tidak menemukan jawaban yang Anda cari, silakan hubungi kami melalui:</p>
+                      <div class="flex flex-wrap gap-4 mt-4">
+                        <a href="#" class="flex items-center text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-envelope mr-2"></i> support@tourpath.id
+                        </a>
+                        <a href="#" class="flex items-center text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-phone mr-2"></i> +62 123 4567 890
+                        </a>
+                        <a href="#" class="flex items-center text-indigo-600 hover:text-indigo-800">
+                            <i class="fab fa-whatsapp mr-2"></i> Chat WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kebijakan Privasi -->
+            <div class="mb-12">                <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2 flex items-center">
+                    <i class="fas fa-lock mr-3 text-indigo-500"></i> Kebijakan Privasi
+                </h3>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700 mb-4">Kebijakan Privasi ini menjelaskan bagaimana TourPath mengumpulkan, menggunakan, dan melindungi informasi pribadi Anda.</p>
+                    
+                    <h4 class="font-semibold text-lg mt-4 mb-2 text-gray-800">Informasi yang Kami Kumpulkan</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Data pribadi (nama, email, nomor telepon)</li>
+                        <li>Informasi pembayaran</li>
+                        <li>Riwayat perjalanan dan preferensi</li>
+                        <li>Data lokasi</li>
+                    </ul>
+                    
+                    <h4 class="font-semibold text-lg mt-4 mb-2 text-gray-800">Penggunaan Informasi</h4>
+                    <p class="text-gray-700">Kami menggunakan informasi Anda untuk:</p>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Menyediakan layanan perencanaan perjalanan</li>
+                        <li>Memproses pembayaran</li>
+                        <li>Meningkatkan pengalaman pengguna</li>
+                        <li>Mengirim pembaruan dan penawaran khusus</li>
+                    </ul>
+                    
+                    <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-medium">Baca Kebijakan Privasi Lengkap →</a>
+                </div>
+            </div>
+            
+            <!-- Syarat & Ketentuan -->
+            <div class="mb-12">                <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2 flex items-center">
+                    <i class="fas fa-file-contract mr-3 text-indigo-500"></i> Syarat & Ketentuan
+                </h3>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <p class="text-gray-700 mb-4">Dengan menggunakan layanan TourPath, Anda setuju untuk terikat oleh Syarat & Ketentuan berikut:</p>
+                    
+                    <h4 class="font-semibold text-lg mt-4 mb-2 text-gray-800">Penggunaan Layanan</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Anda harus berusia minimal 18 tahun atau memiliki izin orang tua</li>
+                        <li>Anda bertanggung jawab atas akun dan informasi yang Anda berikan</li>
+                        <li>Dilarang menggunakan layanan untuk tujuan ilegal</li>
+                    </ul>
+                    
+                    <h4 class="font-semibold text-lg mt-4 mb-2 text-gray-800">Pembatalan & Pengembalian Dana</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Pembatalan tiket dan akomodasi mengikuti kebijakan penyedia</li>
+                        <li>Pengembalian dana memerlukan waktu proses 5-10 hari kerja</li>
+                        <li>Biaya administrasi mungkin dikenakan untuk pembatalan</li>
+                    </ul>
+                    
+                    <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-medium">Baca Syarat & Ketentuan Lengkap →</a>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="mb-12">                <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2 flex items-center">
+                    <i class="fas fa-comments mr-3 text-indigo-500"></i> FAQ (Pertanyaan Umum)
+                </h3>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Accordion Item 1 -->                    <div class="accordion-item border-b">
+                        <button class="accordion-btn w-full text-left p-4 hover:bg-gray-50 flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Bagaimana cara membuat rencana perjalanan?</span>
+                            <i class="accordion-icon fas fa-chevron-down text-indigo-500 transition-transform"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 text-gray-700">
+                                <p>Untuk membuat rencana perjalanan:</p>
+                                <ol class="list-decimal pl-5 mt-2 space-y-1">
+                                    <li>Login ke akun TourPath Anda</li>
+                                    <li>Klik tombol "Buat Rencana Baru"</li>
+                                    <li>Masukkan destinasi dan tanggal perjalanan</li>
+                                    <li>Tambahkan aktivitas dan akomodasi</li>
+                                    <li>Simpan atau bagikan rencana Anda</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accordion Item 2 -->
+                    <div class="accordion-item border-b">                        <button class="accordion-btn w-full text-left p-4 hover:bg-gray-50 flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Apakah TourPath menyediakan tiket masuk objek wisata?</span>
+                            <i class="accordion-icon fas fa-chevron-down text-indigo-500 transition-transform"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 text-gray-700">
+                                <p>Ya, TourPath bekerja sama dengan berbagai penyedia tiket untuk menawarkan tiket masuk objek wisata dengan harga terbaik. Anda dapat memesan tiket langsung melalui aplikasi kami dan menerimanya secara digital.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item border-b">                        <button class="accordion-btn w-full text-left p-4 hover:bg-gray-50 flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Bagaimana jika saya perlu mengubah rencana perjalanan?</span>
+                            <i class="accordion-icon fas fa-chevron-down text-indigo-500 transition-transform"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 text-gray-700">
+                                <p>Anda dapat mengubah rencana perjalanan kapan saja sebelum tanggal keberangkatan:</p>
+                                <ul class="list-disc pl-5 mt-2 space-y-1">
+                                    <li>Buka rencana perjalanan Anda</li>
+                                    <li>Klik tombol "Edit"</li>
+                                    <li>Lakukan perubahan yang diperlukan</li>
+                                    <li>Simpan perubahan</li>
+                                </ul>
+                                <p class="mt-2">Untuk perubahan yang melibatkan pemesanan (akomodasi, transportasi), biaya tambahan atau pengembalian dana mungkin berlaku sesuai kebijakan penyedia.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accordion Item 4 -->
+                    <div class="accordion-item border-b">                        <button class="accordion-btn w-full text-left p-4 hover:bg-gray-50 flex justify-between items-center">
+                            <span class="font-medium text-gray-800">Apakah data kartu kredit saya aman di TourPath?</span>
+                            <i class="accordion-icon fas fa-chevron-down text-indigo-500 transition-transform"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-4 pt-0 text-gray-700">
+                                <p>Ya, kami menggunakan teknologi enkripsi terbaru untuk melindungi informasi pembayaran Anda. TourPath tidak menyimpan detail kartu kredit Anda secara langsung - semua transaksi diproses melalui gateway pembayaran yang aman dan bersertifikat PCI DSS.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">TourPath</h3>
+                    <p class="text-gray-400 text-sm">Planner Perjalanan Wisata Terbaik</p>
+                </div>                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-indigo-400"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-indigo-400"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-indigo-400"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 TourPath. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+            
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const accordionItem = this.parentElement;
+                    accordionItem.classList.toggle('active');
+                    
+                    // Close other open accordion items
+                    accordionBtns.forEach(otherBtn => {
+                        if (otherBtn !== this) {
+                            otherBtn.parentElement.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

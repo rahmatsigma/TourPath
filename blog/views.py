@@ -89,3 +89,7 @@ def destinasi_view(request):
 
 def contact_view(request):
     return render(request, 'blog/contact.html')
+
+@login_required
+def bantuan_view(request):
+    return render(request, 'blog/bantuan.html')
