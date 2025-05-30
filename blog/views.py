@@ -95,5 +95,9 @@ def bantuan_view(request):
     return render(request, 'blog/bantuan.html')
 
 @login_required
-def rute_view(request):
-    return render(request, 'blog/rute.html')
+def destinasi2_view(request):
+    return render(request, 'blog/destinasi2.html')
+
+@login_required 
+def destinasi3_view(request):
+    return render(request, 'blog/destinasi3.html')
