@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Rute | TourPath: Planner Perjalanan Wisata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+        .route-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">    <header class="bg-indigo-600 text-white shadow-md">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'index' %}" class="flex items-center text-white hover:text-indigo-200 transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                    </a>
+                    <h1 class="text-2xl font-bold">TourPath</h1>
+                </div>
+                <div class="flex items-center">
+                    <p class="text-sm opacity-80">Planner Perjalanan Wisata</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Semua Rute Wisata</h1>
+            <p class="text-gray-600">Temukan rute perjalanan wisata yang telah dibuat oleh komunitas</p>
+        </div>        <!-- Search and Filter -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1 relative">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    <input type="text" placeholder="Cari rute wisata..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option>Semua Kategori</option>
+                    <option>Alam</option>
+                    <option>Kuliner</option>
+                    <option>Sejarah</option>
+                    <option>Keluarga</option>
+                </select>
+                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option>Urutkan</option>
+                    <option>Terbaru</option>
+                    <option>Terpopuler</option>
+                    <option>Jarak Terdekat</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Route List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">            <!-- Route Card 1 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover-scale flex-shrink-0 route-card transition-all duration-300">
+                <div class="h-48 bg-indigo-100 relative">
+                    <div class="absolute top-2 left-2 bg-indigo-600 text-white text-xs px-2 py-1 rounded">Alam</div>
+                    <div class="absolute bottom-2 right-2 bg-white text-indigo-600 text-xs px-2 py-1 rounded-full shadow-sm">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Jelajah Wisata Alam Bogor</h3>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <i class="fas fa-user mr-1"></i>
+                        <span class="mr-3">Budi Santoso</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>2 Hari</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-4">
+                        <div>
+                            <i class="fas fa-route text-indigo-500 mr-1"></i>
+                            <span>25 km</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-money-bill-wave text-green-500 mr-1"></i>
+                            <span>Rp 150.000</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock text-indigo-500 mr-1"></i>
+                            <span>8 Jam</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                            <i class="far fa-bookmark mr-1"></i> Simpan
+                        </button>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Route Card 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden route-card transition-all duration-300">
+                <div class="h-48 bg-green-100 relative">
+                    <div class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">Kuliner</div>
+                    <div class="absolute bottom-2 right-2 bg-white text-blue-600 text-xs px-2 py-1 rounded shadow-sm">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.5
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Wisata Kuliner Bandung</h3>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <i class="fas fa-user mr-1"></i>
+                        <span class="mr-3">Ani Wijaya</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>1 Hari</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-4">
+                        <div>
+                            <i class="fas fa-route text-blue-500 mr-1"></i>
+                            <span>18 km</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-money-bill-wave text-green-500 mr-1"></i>
+                            <span>Rp 250.000</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock text-purple-500 mr-1"></i>
+                            <span>6 Jam</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            <i class="far fa-bookmark mr-1"></i> Simpan
+                        </button>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Route Card 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden route-card transition-all duration-300">
+                <div class="h-48 bg-yellow-100 relative">
+                    <div class="absolute top-2 left-2 bg-yellow-600 text-white text-xs px-2 py-1 rounded">Sejarah</div>
+                    <div class="absolute bottom-2 right-2 bg-white text-blue-600 text-xs px-2 py-1 rounded shadow-sm">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.7
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Tur Sejarah Kota Tua Jakarta</h3>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <i class="fas fa-user mr-1"></i>
+                        <span class="mr-3">Rudi Hartono</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>1 Hari</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-4">
+                        <div>
+                            <i class="fas fa-route text-blue-500 mr-1"></i>
+                            <span>12 km</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-money-bill-wave text-green-500 mr-1"></i>
+                            <span>Rp 75.000</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock text-purple-500 mr-1"></i>
+                            <span>5 Jam</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            <i class="far fa-bookmark mr-1"></i> Simpan
+                        </button>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Route Card 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden route-card transition-all duration-300">
+                <div class="h-48 bg-purple-100 relative">
+                    <div class="absolute top-2 left-2 bg-purple-600 text-white text-xs px-2 py-1 rounded">Keluarga</div>
+                    <div class="absolute bottom-2 right-2 bg-white text-blue-600 text-xs px-2 py-1 rounded shadow-sm">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.9
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Liburan Keluarga di Jogja</h3>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <i class="fas fa-user mr-1"></i>
+                        <span class="mr-3">Dewi Lestari</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>3 Hari</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-4">
+                        <div>
+                            <i class="fas fa-route text-blue-500 mr-1"></i>
+                            <span>42 km</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-money-bill-wave text-green-500 mr-1"></i>
+                            <span>Rp 1.200.000</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock text-purple-500 mr-1"></i>
+                            <span>18 Jam</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            <i class="far fa-bookmark mr-1"></i> Simpan
+                        </button>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Route Card 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden route-card transition-all duration-300">
+                <div class="h-48 bg-red-100 relative">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">Petualangan</div>
+                    <div class="absolute bottom-2 right-2 bg-white text-blue-600 text-xs px-2 py-1 rounded shadow-sm">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.6
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Petualangan di Bromo</h3>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <i class="fas fa-user mr-1"></i>
+                        <span class="mr-3">Ahmad Fauzi</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>2 Hari</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-4">
+                        <div>
+                            <i class="fas fa-route text-blue-500 mr-1"></i>
+                            <span>65 km</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-money-bill-wave text-green-500 mr-1"></i>
+                            <span>Rp 850.000</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock text-purple-500 mr-1"></i>
+                            <span>12 Jam</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            <i class="far fa-bookmark mr-1"></i> Simpan
+                        </button>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Route Card 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden route-card transition-all duration-300">
+                <div class="h-48 bg-pink-100 relative">
+                    <div class="absolute top-2 left-2 bg-pink-600 text-white text-xs px-2 py-1 rounded">Romantis</div>
+                    <div class="absolute bottom-2 right-2 bg-white text-blue-600 text-xs px-2 py-1 rounded shadow-sm">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i> 4.8
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Rute Romantis Bali</h3>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <i class="fas fa-user mr-1"></i>
+                        <span class="mr-3">Lia Amelia</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>4 Hari</span>
+                    </div>
+                    <div class="flex justify-between text-sm mb-4">
+                        <div>
+                            <i class="fas fa-route text-blue-500 mr-1"></i>
+                            <span>38 km</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-money-bill-wave text-green-500 mr-1"></i>
+                            <span>Rp 2.500.000</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock text-purple-500 mr-1"></i>
+                            <span>15 Jam</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            <i class="far fa-bookmark mr-1"></i> Simpan
+                        </button>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-8 flex justify-center">
+            <nav class="inline-flex rounded-md shadow">
+                <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-blue-600 font-medium">1</a>
+                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">2</a>
+                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">3</a>
+                <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 rounded-r-md">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-route text-blue-400 text-2xl mr-2"></i>
+                        <h2 class="text-xl font-bold">TourPath</h2>
+                    </div>
+                    <p class="text-gray-400 max-w-md">Planner perjalanan wisata terbaik untuk membantu Anda menemukan rute terbaik sesuai kebutuhan.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Navigasi</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white">Beranda</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Semua Rute</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Rute Saya</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Tentang</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Bantuan</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Kontak</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Privasi</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white">Syarat</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Sosial Media</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 TourPath. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Bookmark functionality
+        document.querySelectorAll('.fa-bookmark').forEach(bookmark => {
+            bookmark.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (this.classList.contains('far')) {
+                    this.classList.remove('far');
+                    this.classList.add('fas', 'text-yellow-400');
+                } else {
+                    this.classList.remove('fas', 'text-yellow-400');
+                    this.classList.add('far');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

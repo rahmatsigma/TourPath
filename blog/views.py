@@ -93,3 +93,7 @@ def contact_view(request):
 @login_required
 def bantuan_view(request):
     return render(request, 'blog/bantuan.html')
+
+@login_required
+def rute_view(request):
+    return render(request, 'blog/rute.html')
