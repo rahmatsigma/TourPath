@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TourPath - Semua Destinasi Wisata</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>TourPath - Semua Destinasi Wisata</title>    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/plan-modal.js' %}"></script>
 </head>
 <body>
     <nav class="bg-white shadow-sm sticky top-0 z-50">
@@ -121,7 +121,7 @@
                     <p class="text-gray-600 text-sm mb-3">Gunung Rinjani adalah gunung berapi yang terkenal dengan pemandangan kawah dan Danau Segara Anak.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.3.800.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Gunung Rinjani">
                             + Rencana Baru
                         </button>
                     </div>
@@ -142,7 +142,7 @@
                     <p class="text-gray-600 text-sm mb-3">Tana Toraja adalah kawasan wisata budaya yang terkenal dengan rumah adat Tongkonan dan upacara pemakaman unik.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.3.800.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Tana Toraja">
                             + Rencana Baru
                         </button>
                     </div>
@@ -163,7 +163,7 @@
                     <p class="text-gray-600 text-sm mb-3">Wakatobi adalah taman nasional di Sulawesi Tenggara yang terkenal sebagai surga penyelam dengan keanekaragaman hayati lautnya.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.3.800.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Wakatobi">
                             + Rencana Baru
                         </button>
                     </div>
@@ -184,7 +184,7 @@
                     <p class="text-gray-600 text-sm mb-3">Gunung Lawu adalah gunung berapi di perbatasan Jawa Tengah dan Jawa Timur, dikenal sebagai tempat pendakian dan wisata spiritual.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.900.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Gunung Lawu">
                             + Rencana Baru
                         </button>
                     </div>
@@ -205,7 +205,7 @@
                     <p class="text-gray-600 text-sm mb-3">Pulau di Bali yang terkenal dengan tebing curam, pantai eksotis, dan spot snorkeling seperti Manta Point.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.2.800.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Nusa Penida">
                             + Rencana Baru
                         </button>
                     </div>
@@ -226,7 +226,7 @@
                     <p class="text-gray-600 text-sm mb-3">Pulau Komodo dikenal sebagai habitat asli komodo dan destinasi wisata alam dunia.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.2.900.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Pulau Komodo">
                             + Rencana Baru
                         </button>
                     </div>
@@ -247,7 +247,7 @@
                     <p class="text-gray-600 text-sm mb-3">Lembah curam di Bukittinggi yang dikenal dengan tebing hijau dan suasana alam yang tenang.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.3.500.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Ngarai Sianok">
                             + Rencana Baru
                         </button>
                     </div>
@@ -268,7 +268,7 @@
                     <p class="text-gray-600 text-sm mb-3">Danau terbesar di Papua yang terkenal dengan pemandangan indah dan pulau-pulau kecil.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-indigo-600 font-bold">Rp.4.000.000</span>
-                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm">
+                        <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Danau Sentani">
                             + Rencana Baru
                         </button>
                     </div>
@@ -341,6 +341,157 @@
         </div>
     </footer>
 
+    <!-- Modal Form -->
+    <div id="planModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in m-4">
+            <!-- Form Header -->
+            <div class="bg-indigo-600 py-4 px-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marked-alt text-white text-2xl mr-3"></i>
+                        <h2 class="text-white text-xl font-bold">Tambah Rencana Perjalanan</h2>
+                    </div>
+                    <button onclick="closePlanModal()" class="text-white hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <p class="text-indigo-200 text-sm mt-1">Isi detail rencana perjalanan Anda</p>
+            </div>
+              <!-- Form Content -->
+            <form class="p-6 space-y-6">
+                <input type="hidden" id="destinationImage" name="destinationImage">
+                <!-- Nama Rencana -->
+                <div class="space-y-2">
+                    <label for="plan-name" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-pencil-alt mr-2 text-indigo-500"></i>Nama Rencana
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="plan-name" 
+                            placeholder="Misal: Liburan ke Bali" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                            required
+                        >
+                        <i class="fas fa-heading absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Destinasi -->
+                <div class="space-y-2">
+                    <label for="destination" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-map-marker-alt mr-2 text-indigo-500"></i>Destinasi
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="destination" 
+                            placeholder="Kota atau tempat tujuan" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                            required
+                        >
+                        <i class="fas fa-location-dot absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Tanggal Mulai dan Selesai -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Tanggal Mulai -->
+                    <div class="space-y-2">
+                        <label for="start-date" class="block text-sm font-medium text-gray-700">
+                            <i class="fas fa-calendar-day mr-2 text-indigo-500"></i>Tanggal Mulai
+                        </label>
+                        <div class="relative">
+                            <input 
+                                type="date" 
+                                id="start-date" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                                required
+                            >
+                            <i class="fas fa-calendar-check absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Tanggal Selesai -->
+                    <div class="space-y-2">
+                        <label for="end-date" class="block text-sm font-medium text-gray-700">
+                            <i class="fas fa-calendar-week mr-2 text-indigo-500"></i>Tanggal Selesai
+                        </label>
+                        <div class="relative">
+                            <input 
+                                type="date" 
+                                id="end-date" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                                required
+                            >
+                            <i class="fas fa-calendar-check absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                        <i class="fas fa-plus mr-2"></i>Tambah Rencana
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification element -->
+    <div id="notification" class="notification">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span class="notification-message"></span>
+        </div>
+    </div>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Custom styles for date picker */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.5);
+            cursor: pointer;
+        }
+        input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+            padding-left: 0.5rem;
+        }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+
     <script>
         // Simple category filter functionality
         document.querySelectorAll('.category-chip').forEach(button => {
@@ -397,6 +548,124 @@
                 // In a real app, you would navigate to destination detail page
                 console.log(`Viewing details for: ${this.querySelector('h3').textContent}`);
             });
+        });
+
+        // Function to open modal form
+        function openPlanModal(destination = '') {
+            const modal = document.getElementById('planModal');
+            const destinationInput = document.getElementById('destination');
+            
+            if (destination) {
+                destinationInput.value = destination;
+            }
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to close modal form
+        function closePlanModal() {
+            const modal = document.getElementById('planModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.querySelector('#planModal form').reset();
+        }        const imageMap = {
+            'Gunung Rinjani': 'https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQkmygFOBKQ5lFBJ6D86-Z-oabxXhN89Mv-ZrhiGA4wQU2kWqLzzXgCnyziLAITNVGOVwjW59eA0Yiid4Au5unoHCneRVSdw9wK-lUpUg',
+            'Tana Toraja': 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nobs6weIwDqR7GIgSfJ7T7HfMgR8uxGKIkeikKSMm6ePRduxoUrDDAfsI3cCw_-40oXJpLLuEEn6AEkq3BgBtOVZQCw0msoqbPauyJnsqszpXUMxFgRV6hE9uiNExqqGwmfcFSN4w=w675-h390-n-k-no',
+            'Wakatobi': 'https://eventdaerah.kemenparekraf.go.id/storage/app/uploads/public/66f/3d2/e61/66f3d2e614a10818911352.webp',
+            'Gunung Lawu': 'https://enimekspres.bacakoran.co/upload/9959e2f76ef2e42a6025547ff1f8461b.jpg',
+            'Nusa Penida': 'https://www.nusapenida.com/assets/things_todo/Kelingking-Secret-Point_172584.jpg',
+            'Pulau Komodo': 'https://asset.kompas.com/crops/vdZhnhd65omILwbPWGk6C_Vdsp0=/0x0:780x520/1200x800/data/photo/2019/09/26/5d8c64544d656.jpg',
+            'Ngarai Sianok': 'https://cdn.idntimes.com/content-images/community/2022/02/268570907-876458323104588-8503715804868320688-nwebp-28598b7784be39d2a0e7a69c686d02c1-db9e16b3ca5100b21bb9a3178f7b9495_600x400.jpg',
+            'Danau Sentani': 'https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTvSyCcdfiXHUhcxtcpbMTYrCcxteRS6Ewf9eTisWgRRXIEgL7PSmYyR2I2aPa8V0KF0L7LDH44hGn4WwP2RU_tfcuhrFO2WgFLNsAYBQ'
+        };
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        function getDestinationImage(destination) {
+            return imageMap[destination] || '';
+        }        document.querySelectorAll('[data-destination]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const destination = this.getAttribute('data-destination');
+                document.getElementById('destination').value = destination;
+                document.getElementById('destinationImage').value = getDestinationImage(destination);
+                const modal = document.getElementById('planModal');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+        });document.querySelector('#planModal form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+
+            const planData = {
+                name: document.getElementById('plan-name').value,
+                destination: document.getElementById('destination').value,
+                startDate: document.getElementById('start-date').value,
+                endDate: document.getElementById('end-date').value,
+                image: document.getElementById('destinationImage').value
+            };
+
+            let plans = JSON.parse(localStorage.getItem('travelPlans') || '[]');
+            plans.push(planData);
+            localStorage.setItem('travelPlans', JSON.stringify(plans));
+
+            this.reset();
+            const modal = document.getElementById('planModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            showNotification('Rencana perjalanan telah ditambahkan!');
+        });
+
+        // Fungsi untuk validasi form
+        function validateForm() {
+            const planName = document.getElementById('plan-name').value;
+            const destination = document.getElementById('destination').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            if (!planName || !destination || !startDate || !endDate) {
+                alert('Mohon lengkapi semua field yang diperlukan');
+                return false;
+            }
+
+            if (startDate > endDate) {
+                alert('Tanggal mulai tidak boleh lebih besar dari tanggal selesai');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Update fungsi close modal
+        function closePlanModal() {
+            const modal = document.getElementById('planModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.querySelector('#planModal form').reset();
+        }
+
+        // Update event listener untuk close button
+        document.getElementById('closeModal').addEventListener('click', function() {
+            closePlanModal();
+        });
+
+        // Update event listener untuk click di luar modal
+        document.getElementById('planModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePlanModal();
+            }
         });
     </script>
 </body>

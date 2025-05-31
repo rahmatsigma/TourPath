@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Rencana Perjalanan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles for date picker */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.5);
+            cursor: pointer;
+        }
+        input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+            padding-left: 0.5rem;
+        }
+        
+        /* Animation for form */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in">
+        <!-- Form Header -->
+        <div class="bg-indigo-600 py-4 px-6">
+            <div class="flex items-center">
+                <i class="fas fa-map-marked-alt text-white text-2xl mr-3"></i>
+                <h2 class="text-white text-xl font-bold">Tambah Rencana Perjalanan</h2>
+            </div>
+            <p class="text-indigo-200 text-sm mt-1">Isi detail rencana perjalanan Anda</p>
+        </div>
+        
+        <!-- Form Content -->
+        <form class="p-6 space-y-6">
+            <!-- Nama Rencana -->
+            <div class="space-y-2">
+                <label for="plan-name" class="block text-sm font-medium text-gray-700">
+                    <i class="fas fa-pencil-alt mr-2 text-indigo-500"></i>Nama Rencana
+                </label>
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="plan-name" 
+                        placeholder="Misal: Liburan ke Bali" 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                        required
+                    >
+                    <i class="fas fa-heading absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+            
+            <!-- Destinasi -->
+            <div class="space-y-2">
+                <label for="destination" class="block text-sm font-medium text-gray-700">
+                    <i class="fas fa-map-marker-alt mr-2 text-indigo-500"></i>Destinasi
+                </label>
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="destination" 
+                        placeholder="Kota atau tempat tujuan" 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                        required
+                    >
+                    <i class="fas fa-location-dot absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+            
+            <!-- Tanggal Mulai dan Selesai -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Tanggal Mulai -->
+                <div class="space-y-2">
+                    <label for="start-date" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-calendar-day mr-2 text-indigo-500"></i>Tanggal Mulai
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="date" 
+                            id="start-date" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                            required
+                        >
+                        <i class="fas fa-calendar-check absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Tanggal Selesai -->
+                <div class="space-y-2">
+                    <label for="end-date" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-calendar-week mr-2 text-indigo-500"></i>Tanggal Selesai
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="date" 
+                            id="end-date" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 pl-10"
+                            required
+                        >
+                        <i class="fas fa-calendar-times absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4">
+                <button 
+                    type="button" 
+                    class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
+                    onclick="resetForm()"
+                >
+                    <i class="fas fa-undo mr-2"></i> Reset
+                </button>
+                <button 
+                    type="submit" 
+                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center"
+                >
+                    <i class="fas fa-plus-circle mr-2"></i> Tambah Rencana
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to reset form
+        function resetForm() {
+            document.querySelector('form').reset();
+            
+            // Show a small notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-lg flex items-center animate-fade-in';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle mr-2"></i>
+                <span>Form telah direset</span>
+            `;
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+        
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const planName = document.getElementById('plan-name').value;
+            const destination = document.getElementById('destination').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            
+            // Validate dates
+            if (new Date(startDate) > new Date(endDate)) {
+                alert('Tanggal selesai tidak boleh sebelum tanggal mulai!');
+                return;
+            }
+            
+            // Here you would typically send data to server
+            console.log({
+                planName,
+                destination,
+                startDate,
+                endDate
+            });
+            
+            // Show success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center animate-fade-in';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle mr-2"></i>
+                <span>Rencana "${planName}" berhasil ditambahkan!</span>
+            `;
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+            
+            // Reset form after submission
+            this.reset();
+        });
+        
+        // Set minimum date for end date based on start date
+        document.getElementById('start-date').addEventListener('change', function() {
+            const endDateInput = document.getElementById('end-date');
+            endDateInput.min = this.value;
+            
+            // If current end date is before new start date, reset it
+            if (endDateInput.value && new Date(endDateInput.value) < new Date(this.value)) {
+                endDateInput.value = this.value;
+            }
+        });
+    </script>
+</body>
+</html>

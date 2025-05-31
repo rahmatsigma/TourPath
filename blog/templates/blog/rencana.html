@@ -6,6 +6,22 @@
     <title>Rencana Perjalanan - TourPat</title>    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="static/css/index.css">
+    <style>
+        .status-filter {
+            background-color: #f3f4f6;
+            color: #6b7280;
+            transition: all 0.3s ease;
+        }
+        
+        .status-filter:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .status-filter.active {
+            background-color: #4f46e5;
+            color: white;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 font-sans">
     <div class="flex h-screen overflow-hidden">
@@ -74,222 +90,48 @@
                                 <h2 class="text-2xl font-bold text-gray-800">Rencana Perjalanan Anda</h2>
                                 <p class="text-gray-600">Kelola dan buat rencana perjalanan personal Anda</p>
                             </div>
-                            <button class="flex items-center bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <i class="fas fa-plus mr-2"></i> Buat Rencana Baru
+                        </div>                        
+                        <!-- Status filter -->
+                        <div class="flex space-x-4 mb-6">
+                            <button class="status-filter active px-4 py-2 rounded-full text-sm font-medium" data-status="all">
+                                Semua
+                            </button>
+                            <button class="status-filter px-4 py-2 rounded-full text-sm font-medium" data-status="ongoing">
+                                Belum Selesai
+                            </button>
+                            <button class="status-filter px-4 py-2 rounded-full text-sm font-medium" data-status="completed">
+                                Selesai
                             </button>
                         </div>
+
                         <!-- Travel plans grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                            <!-- Plan Card 1 -->
-                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
-                                <div class="relative">
-                                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Bali" class="w-full h-48 object-cover">
-                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
-                                        <i class="fas fa-heart text-red-500"></i>
-                                    </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h3 class="font-bold text-lg text-gray-800">Liburan Romantis di Bali</h3>
-                                            <p class="text-gray-500 text-sm flex items-center">
-                                                <i class="fas fa-calendar-day mr-1"></i> 15 - 20 Juli 2023
-                                            </p>
-                                        </div>
-                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Aktif</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <div class="flex justify-between text-sm mb-1">
-                                            <span class="text-gray-600">Progress</span>
-                                            <span class="font-medium">65%</span>
-                                        </div>
-                                        <div class="w-full bg-gray-200 rounded-full h-2">
-                                            <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 65%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Partner" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
-                                        </div>
-                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
-                                            Lihat Detail
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Plan Card 2 -->
-                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
-                                <div class="relative">
-                                    <img src="https://images.unsplash.com/photo-1535406208535-1429839cfd13?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Yogyakarta" class="w-full h-48 object-cover">
-                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
-                                        <i class="far fa-heart text-gray-500"></i>
-                                    </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h3 class="font-bold text-lg text-gray-800">Petualangan di Yogyakarta</h3>
-                                            <p class="text-gray-500 text-sm flex items-center">
-                                                <i class="fas fa-calendar-day mr-1"></i> 5 - 10 Agustus 2023
-                                            </p>
-                                        </div>
-                                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Draft</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <div class="flex justify-between text-sm mb-1">
-                                            <span class="text-gray-600">Progress</span>
-                                            <span class="font-medium">30%</span>
-                                        </div>
-                                        <div class="w-full bg-gray-200 rounded-full h-2">
-                                            <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 30%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Friend 1" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
-                                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Friend 2" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
-                                        </div>
-                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
-                                            Lanjutkan
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Plan Card 3 -->
-                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
-                                <div class="relative">
-                                    <img src="https://images.unsplash.com/photo-1527631746610-b25700a1cd14?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Lombok" class="w-full h-48 object-cover">
-                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
-                                        <i class="fas fa-heart text-red-500"></i>
-                                    </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h3 class="font-bold text-lg text-gray-800">Eksplorasi Lombok</h3>
-                                            <p class="text-gray-500 text-sm flex items-center">
-                                                <i class="fas fa-calendar-day mr-1"></i> 1 - 7 September 2023
-                                            </p>
-                                        </div>
-                                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Baru</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <div class="flex justify-between text-sm mb-1">
-                                            <span class="text-gray-600">Progress</span>
-                                            <span class="font-medium">15%</span>
-                                        </div>
-                                        <div class="w-full bg-gray-200 rounded-full h-2">
-                                            <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 15%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
-                                        </div>
-                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
-                                            Mulai Rencanakan
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Plan Card 4 -->
-                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
-                                <div class="relative">
-                                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Raja Ampat" class="w-full h-48 object-cover">
-                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
-                                        <i class="far fa-heart text-gray-500"></i>
-                                    </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h3 class="font-bold text-lg text-gray-800">Menyelam di Raja Ampat</h3>
-                                            <p class="text-gray-500 text-sm flex items-center">
-                                                <i class="fas fa-calendar-day mr-1"></i> 10 - 17 Juni 2023
-                                            </p>
-                                        </div>
-                                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full">Selesai</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <div class="flex justify-between text-sm mb-1">
-                                            <span class="text-gray-600">Progress</span>
-                                            <span class="font-medium">100%</span>
-                                        </div>
-                                        <div class="w-full bg-gray-200 rounded-full h-2">
-                                            <div class="bg-green-500 h-2 rounded-full progress-bar" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Friend" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
-                                        </div>
-                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
-                                            Lihat Review
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Plan Card 5 -->
-                            <div class="bg-white rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-lg">
-                                <div class="relative">
-                                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Bromo" class="w-full h-48 object-cover">
-                                    <div class="absolute top-2 right-2 bg-white rounded-full p-2 shadow">
-                                        <i class="far fa-heart text-gray-500"></i>
-                                    </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h3 class="font-bold text-lg text-gray-800">Sunrise di Bromo</h3>
-                                            <p class="text-gray-500 text-sm flex items-center">
-                                                <i class="fas fa-calendar-day mr-1"></i> 20 - 22 Mei 2023
-                                            </p>
-                                        </div>
-                                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Dibatalkan</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <div class="flex justify-between text-sm mb-1">
-                                            <span class="text-gray-600">Progress</span>
-                                            <span class="font-medium">45%</span>
-                                        </div>
-                                        <div class="w-full bg-gray-200 rounded-full h-2">
-                                            <div class="bg-red-500 h-2 rounded-full progress-bar" style="width: 45%"></div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 flex justify-between items-center">
-                                        <div class="flex items-center">
-                                            <img src="https://randomuser.me/api/portraits/men/18.jpg" alt="Friend 1" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
-                                            <img src="https://randomuser.me/api/portraits/women/27.jpg" alt="Friend 2" class="w-6 h-6 rounded-full border-2 border-white -mr-2">
-                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="You" class="w-6 h-6 rounded-full border-2 border-white">
-                                        </div>
-                                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium">
-                                            Buat Ulang
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Add New Plan Card -->
-                            <div class="bg-white rounded-lg shadow overflow-hidden border-2 border-dashed border-gray-300 hover:border-blue-500 transition-all duration-300 flex flex-col items-center justify-center">
-                                <div class="p-6 text-center">
-                                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 mb-4">
-                                        <i class="fas fa-plus text-blue-500"></i>
-                                    </div>
-                                    <h3 class="text-lg font-medium text-gray-900 mb-1">Buat Rencana Baru</h3>
-                                    <p class="text-gray-500 text-sm">Mulai petualangan baru Anda</p>
-                                    <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                        Tambah Rencana
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="travelPlansGrid">
+                            <!-- Travel plan cards will be dynamically inserted here -->
                         </div>
+
+                        <template id="travel-plan-template">
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                <div class="relative h-48">
+                                    <img src="" alt="" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-bold text-lg mb-1 plan-name"></h3>
+                                    <p class="text-gray-600 text-sm mb-2 plan-destination"></p>
+                                    <div class="flex items-center text-sm text-gray-500 mb-4">
+                                        <i class="fas fa-calendar mr-2"></i>
+                                        <span class="plan-dates"></span>
+                                    </div>
+                                    <div class="flex justify-between gap-2">
+                                        <button class="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg text-sm cancel-plan">
+                                            <i class="fas fa-times mr-1"></i> Batal
+                                        </button>
+                                        <button class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm complete-plan">
+                                            <i class="fas fa-check mr-1"></i> Selesai
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
 
                         <!-- Pagination -->
                         <div class="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -317,34 +159,187 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <script>
-        // Simple tab switching functionality
+    </div>    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.border-b button');
+            let currentFilter = 'all';
+            const statusFilters = document.querySelectorAll('.status-filter');
             
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('tab-active', 'text-blue-600'));
-                    tabs.forEach(t => t.classList.add('text-gray-500', 'hover:text-gray-700'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.remove('text-gray-500', 'hover:text-gray-700');
-                    this.classList.add('tab-active', 'text-blue-600');
+            // Event listener untuk tombol filter
+            statusFilters.forEach(button => {
+                button.addEventListener('click', function() {
+                    statusFilters.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    currentFilter = this.dataset.status;
+                    loadTravelPlans();
                 });
             });
 
-            // Animation for progress bars
-            const progressBars = document.querySelectorAll('.progress-bar');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
+            // Load and display travel plans
+            function loadTravelPlans() {
+                let plans = JSON.parse(localStorage.getItem('travelPlans') || '[]');
+                const completedPlans = JSON.parse(localStorage.getItem('completedPlans') || '[]');
+                const grid = document.getElementById('travelPlansGrid');
+                const template = document.getElementById('travel-plan-template');
+                
+                // Filter plans based on status
+                const activePlans = JSON.parse(localStorage.getItem('travelPlans') || '[]');
+                
+                if (currentFilter === 'completed') {
+                    plans = completedPlans;
+                } else if (currentFilter === 'ongoing') {
+                    plans = activePlans;
+                } else {
+                    plans = [...activePlans, ...completedPlans];
+                }
+                
+                // Clear existing cards
+                grid.innerHTML = '';
+                
+                if (plans.length === 0) {
+                    grid.innerHTML = `
+                        <div class="col-span-3 text-center py-8">
+                            <i class="fas fa-calendar-times text-gray-400 text-4xl mb-4"></i>
+                            <p class="text-gray-500">Belum ada rencana perjalanan${currentFilter === 'completed' ? ' yang selesai' : currentFilter === 'ongoing' ? ' yang belum selesai' : ''}. ${currentFilter === 'all' ? 'Mulai buat rencana baru!' : ''}</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                plans.forEach((plan, index) => {
+                    const card = template.content.cloneNode(true);
+                    
+                    // Set plan details
+                    const imgEl = card.querySelector('img');
+                    imgEl.alt = plan.destination;
+                    
+                    if (plan.image) {
+                        imgEl.src = plan.image;
+                    } else {
+                        imgEl.src = '/static/blog/images/placeholder.jpg';
+                    }
+                    
+                    card.querySelector('.plan-name').textContent = plan.name || `Rencana ke ${plan.destination}`;
+                    card.querySelector('.plan-destination').textContent = plan.destination;
+                    
+                    // Format dates
+                    const startDate = new Date(plan.startDate).toLocaleDateString('id-ID', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+                    const endDate = new Date(plan.endDate).toLocaleDateString('id-ID', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+                    card.querySelector('.plan-dates').textContent = `${startDate} - ${endDate}`;
+                    
+                    // Check if the plan is in completedPlans array
+                    const isCompleted = completedPlans.some(cp => 
+                        cp.name === plan.name && 
+                        cp.destination === plan.destination && 
+                        cp.startDate === plan.startDate && 
+                        cp.endDate === plan.endDate
+                    );
+                    
+                    const cardElement = card.querySelector('.bg-white');
+                    
+                    // Modify buttons based on completion status
+                    const cancelBtn = cardElement.querySelector('.cancel-plan');
+                    const completeBtn = cardElement.querySelector('.complete-plan');
+                    
+                    if (isCompleted) {
+                        cancelBtn.innerHTML = '<i class="fas fa-trash mr-1"></i> Hapus';
+                        completeBtn.innerHTML = '<i class="fas fa-undo mr-1"></i> Kembalikan';
+                        completeBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                        completeBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+                        // Add visual indicator for completed plans
+                        cardElement.classList.add('border-2', 'border-blue-500');
+                    } else {
+                        cancelBtn.innerHTML = '<i class="fas fa-times mr-1"></i> Batal';
+                        completeBtn.innerHTML = '<i class="fas fa-check mr-1"></i> Selesai';
+                        completeBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                        completeBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+                        cardElement.classList.remove('border-2', 'border-blue-500');
+                    }
+                    
+                    // Add event listeners for buttons
+                    cancelBtn.addEventListener('click', () => {
+                        if (confirm('Apakah Anda yakin ingin ' + (isCompleted ? 'menghapus' : 'membatalkan') + ' rencana ini?')) {
+                            if (isCompleted) {
+                                // Find the index in completedPlans array
+                                const completedIndex = completedPlans.findIndex(cp => 
+                                    cp.name === plan.name && 
+                                    cp.destination === plan.destination && 
+                                    cp.startDate === plan.startDate && 
+                                    cp.endDate === plan.endDate
+                                );
+                                if (completedIndex !== -1) {
+                                    completedPlans.splice(completedIndex, 1);
+                                    localStorage.setItem('completedPlans', JSON.stringify(completedPlans));
+                                }
+                            } else {
+                                const planIndex = activePlans.findIndex(p => 
+                                    p.name === plan.name && 
+                                    p.destination === plan.destination && 
+                                    p.startDate === plan.startDate && 
+                                    p.endDate === plan.endDate
+                                );
+                                if (planIndex !== -1) {
+                                    activePlans.splice(planIndex, 1);
+                                    localStorage.setItem('travelPlans', JSON.stringify(activePlans));
+                                }
+                            }
+                            loadTravelPlans();
+                        }
+                    });
+                    
+                    completeBtn.addEventListener('click', () => {
+                        if (isCompleted) {
+                            if (confirm('Kembalikan rencana ini ke daftar yang belum selesai?')) {
+                                // Find and remove from completedPlans
+                                const completedIndex = completedPlans.findIndex(cp => 
+                                    cp.name === plan.name && 
+                                    cp.destination === plan.destination && 
+                                    cp.startDate === plan.startDate && 
+                                    cp.endDate === plan.endDate
+                                );
+                                if (completedIndex !== -1) {
+                                    const plan = completedPlans.splice(completedIndex, 1)[0];
+                                    activePlans.push(plan);
+                                    localStorage.setItem('travelPlans', JSON.stringify(activePlans));
+                                    localStorage.setItem('completedPlans', JSON.stringify(completedPlans));
+                                }
+                            }
+                        } else {
+                            if (confirm('Tandai rencana ini sebagai selesai?')) {
+                                // Find and remove from activePlans
+                                const planIndex = activePlans.findIndex(p => 
+                                    p.name === plan.name && 
+                                    p.destination === plan.destination && 
+                                    p.startDate === p.startDate && 
+                                    p.endDate === plan.endDate
+                                );
+                                if (planIndex !== -1) {
+                                    const completedPlan = activePlans.splice(planIndex, 1)[0];
+                                    completedPlans.push(completedPlan);
+                                    localStorage.setItem('travelPlans', JSON.stringify(activePlans));
+                                    localStorage.setItem('completedPlans', JSON.stringify(completedPlans));
+                                    alert('Selamat! Rencana perjalanan telah selesai.');
+                                }
+                            }
+                        }
+                        loadTravelPlans();
+                    });
+                    
+                    grid.appendChild(card);
+                });
+            }
+            
+            // Initial load
+            loadTravelPlans();
         });
     </script>
 </body>
