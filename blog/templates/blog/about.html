@@ -286,8 +286,8 @@
                 <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                     <div class="overflow-hidden h-64">
                         <img src="{% static 'assets/team-3.jpg' %}" 
-                             alt="Team Member" 
-                             class="w-full h-full object-cover transition duration-500">
+                            alt="Team Member" 
+                            class="w-full h-full object-cover transition duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-1">GAJAH</h3>
@@ -309,8 +309,8 @@
                 <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                     <div class="overflow-hidden h-64">
                         <img src="{% static 'assets/team-4.jpg' %}" 
-                             alt="Team Member" 
-                             class="w-full h-full object-cover transition duration-500">
+                            alt="Team Member" 
+                            class="w-full h-full object-cover transition duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-1">KUCING</h3>
@@ -332,8 +332,8 @@
                 <div class="team-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
                     <div class="overflow-hidden h-64">
                         <img src="{% static 'assets/team-5.jpg' %}" 
-                             alt="Marketing" 
-                             class="w-full h-full object-cover transition duration-500">
+                            alt="Marketing" 
+                            class="w-full h-full object-cover transition duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-1">Budi Santoso</h3>
@@ -397,10 +397,10 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-6">Dukungan</h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Pusat Bantuan</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Syarat & Ketentuan</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="{% url 'bantuan'%}" class="text-gray-400 hover:text-white">Pusat Bantuan</a></li>
+                        <li><a href="{% url 'bantuan'%}" class="text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
+                        <li><a href="{% url 'bantuan'%}" class="text-gray-400 hover:text-white">Syarat & Ketentuan</a></li>
+                        <li><a href="{% url 'bantuan'%}" class="text-gray-400 hover:text-white">FAQ</a></li>
                         <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-white">Kontak</a></li>
                     </ul>
                 </div>
@@ -429,9 +429,9 @@
                     &copy; 2023 TourPath. All rights reserved.
                 </p>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white">Kebijakan Privasi</a>
-                    <a href="#" class="text-gray-400 hover:text-white">Syarat Layanan</a>
-                    <a href="#" class="text-gray-400 hover:text-white">Peta Situs</a>
+                    <a href="{% url 'bantuan'%}" class="text-gray-400 hover:text-white">Kebijakan Privasi</a>
+                    <a href="{% url 'bantuan'%}" class="text-gray-400 hover:text-white">Syarat Layanan</a>
+                    <a href="{% url 'bantuan'%}" class="text-gray-400 hover:text-white">Peta Situs</a>
                 </div>
             </div>
         </div>
