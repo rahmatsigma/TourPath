@@ -53,14 +53,15 @@
                     </button>
                 </div>
             </div>
-        </div>
-    </nav>    <!-- Hero Section -->
-    <div class="hero-gradient text-white py-12">
+        </div>    </nav>    <!-- Hero Section -->
+    <div class="hero-section text-white py-12">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl font-bold mb-4">Temukan Destinasi Wisata Impian Anda</h1>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Jelajahi berbagai tempat wisata menarik di seluruh Indonesia dan dunia</p>
-            
-            <div class="max-w-2xl mx-auto relative">                <input type="text" placeholder="Cari destinasi wisata..." 
+            <div class="max-w-2xl mx-auto relative">
+                <input type="text" 
+                    id="searchInput"
+                    placeholder="Cari destinasi wisata..." 
                     class="w-full px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-lg search-box">
                 <button class="absolute right-2 top-2 bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700">
                     <i class="fas fa-search"></i>
@@ -73,34 +74,19 @@
     <div class="container mx-auto px-4 py-8">
         <!-- Categories -->
         <div class="mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-gray-800">Kategori Destinasi</h2>
-            <div class="flex flex-wrap gap-3">                <button class="category-chip active-category px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    Semua
-                </button>                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-mountain mr-2"></i>Alam
-                </button>
-                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-umbrella-beach mr-2"></i>Pantai
-                </button>
-                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-city mr-2"></i>Kota
-                </button>
-                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-monument mr-2"></i>Sejarah
-                </button>
-            </div>
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Destinasi</h2>
         </div>
 
         <!-- Filter and Sort -->
         <div class="flex flex-col md:flex-row justify-between items-center mb-8">
             <div class="text-gray-600 mb-4 md:mb-0">
                 <span class="font-bold"></span>
-            </div>
-            <div class="flex items-center">
-                <span class="mr-2 text-gray-600">Urutkan:</span>                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <option>Semua</option>
-                    <option>Harga Termurah</option>
-                    <option>Harga Tertinggi</option>
+            </div>            <div class="flex items-center">
+                <span class="mr-2 text-gray-600">Urutkan:</span>
+                <select id="sortSelect" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="all">Semua</option>
+                    <option value="price-asc">Harga Termurah</option>
+                    <option value="price-desc">Harga Tertinggi</option>
                 </select>
             </div>
         </div>
@@ -271,21 +257,23 @@
                         <button class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded-lg text-sm" data-destination="Danau Sentani">
                             + Rencana Baru
                         </button>
-                    </div>
-                </div>
+                    </div>                </div>
             </div>
+        </div>
 
-        <div class="mt-12 flex justify-center">
-            <nav class="flex items-center space-x-2">
+        <!-- Pagination -->
+        <div class="w-full flex justify-center mt-12 mb-8">
+            <nav class="inline-flex items-center space-x-2">
                 <a href="{% url 'destinasi' %}" class="px-3 py-1 rounded-lg text-gray-700 hover:bg-indigo-600 hover:text-white border border-gray-300 hover:border-indigo-600">1</a>
                 <a href="#" class="px-3 py-1 rounded-lg bg-indigo-600 text-white border border-indigo-600">2</a>
                 <a href="{% url 'destinasi3' %}" class="px-3 py-1 rounded-lg text-gray-700 hover:bg-indigo-600 hover:text-white border border-gray-300 hover:border-indigo-600">3</a>
             </nav>
         </div>
     </div>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4 flex items-center">
@@ -320,17 +308,17 @@
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-phone-alt mr-3 text-indigo-400"></i>
-                            <span class="text-gray-400">+62 812 3456 7890</span>
+                            <span class="text-gray-400">+62 857 6485 9874</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-indigo-400"></i>
-                            <span class="text-gray-400">info@tourpath.id</span>
+                            <span class="text-gray-400">TourPath@gmail.com</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2023 TourPath. All rights reserved.</p>
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 TourPath. All rights reserved.</p>
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
                     <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
@@ -445,9 +433,31 @@
             <i class="fas fa-check-circle mr-2"></i>
             <span class="notification-message"></span>
         </div>
-    </div>
+    </div>    <style>
+        .hero-section {
+            background-image: url('/static/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Overlay gelap untuk meningkatkan keterbacaan teks */
+            z-index: 1;
+        }
+        
+        .hero-section > div {
+            position: relative;
+            z-index: 2;
+        }
 
-    <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -490,16 +500,65 @@
                 opacity: 1;
             }
         }
-    </style>
+    </style>    <script>
+        // Search and filter functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.querySelector('.absolute.right-2.top-2');
+        const destinationCards = document.querySelectorAll('.destination-card');
+        const destinationsGrid = document.querySelector('.grid');
 
-    <script>
-        // Simple category filter functionality
+        function filterDestinations() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const sortValue = document.getElementById('sortSelect').value;
+            
+            // Convert NodeList to Array for easier manipulation
+            let cards = Array.from(destinationCards);
+
+            // Filter cards based on search term
+            cards = cards.filter(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const location = card.querySelector('.text-gray-500').textContent.toLowerCase();
+                
+                return title.includes(searchTerm) || 
+                       description.includes(searchTerm) || 
+                       location.includes(searchTerm);
+            });
+
+            // Sort cards based on price
+            if (sortValue !== 'all') {
+                cards.sort((a, b) => {
+                    const priceA = parseInt(a.querySelector('.text-indigo-600').textContent.replace(/[^0-9]/g, ''));
+                    const priceB = parseInt(b.querySelector('.text-indigo-600').textContent.replace(/[^0-9]/g, ''));
+                    
+                    return sortValue === 'price-asc' ? priceA - priceB : priceB - priceA;
+                });
+            }
+
+            // Clear the grid
+            while (destinationsGrid.firstChild) {
+                destinationsGrid.removeChild(destinationsGrid.firstChild);
+            }
+
+            // Add filtered and sorted cards back to the grid
+            cards.forEach(card => {
+                destinationsGrid.appendChild(card);
+            });
+        }
+
+        // Add event listeners for search and sort
+        searchInput.addEventListener('input', filterDestinations);
+        searchButton.addEventListener('click', filterDestinations);
+        document.getElementById('sortSelect').addEventListener('change', filterDestinations);
+
+        // Category filter functionality
         document.querySelectorAll('.category-chip').forEach(button => {
             button.addEventListener('click', function() {
                 // Remove active class from all buttons
                 document.querySelectorAll('.category-chip').forEach(btn => {
                     btn.classList.remove('active-category');
-                    btn.classList.add('bg-gray-200');                    btn.classList.remove('bg-indigo-600', 'text-white');
+                    btn.classList.add('bg-gray-200');
+                    btn.classList.remove('bg-indigo-600', 'text-white');
                 });
                 
                 // Add active class to clicked button
@@ -507,8 +566,16 @@
                 this.classList.remove('bg-gray-200');
                 this.classList.add('bg-indigo-600', 'text-white');
                 
-                // In a real app, you would filter destinations here
-                console.log(`Filtering by: ${this.textContent.trim()}`);
+                const category = this.textContent.trim().toLowerCase();
+                
+                destinationCards.forEach(card => {
+                    if (category === 'semua') {
+                        card.style.display = 'block';
+                    } else {
+                        const description = card.querySelector('p').textContent.toLowerCase();
+                        card.style.display = description.includes(category) ? 'block' : 'none';
+                    }
+                });
             });
         });
 

@@ -8,6 +8,31 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/plan-modal.js' %}"></script>
+    <style>
+        .hero-section {
+            background-image: url('/static/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Overlay gelap untuk meningkatkan keterbacaan teks */
+            z-index: 1;
+        }
+        
+        .hero-section > div {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
     
 </head>
 <body>
@@ -56,14 +81,14 @@
             </div>
         </div>
     </nav>    <!-- Hero Section -->
-    <div class="hero-gradient text-white py-12">
+    <div class="hero-section text-white py-12">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl font-bold mb-4">Temukan Destinasi Wisata Impian Anda</h1>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Jelajahi berbagai tempat wisata menarik di seluruh Indonesia dan dunia</p>
-            
             <div class="max-w-2xl mx-auto relative">                <input type="text" placeholder="Cari destinasi wisata..." 
+                    id="searchInput"
                     class="w-full px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-lg search-box">
-                <button class="absolute right-2 top-2 bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700">
+                <button class="absolute right-2 top-2 bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700" id="searchButton">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
@@ -75,21 +100,6 @@
         <!-- Categories -->
         <div class="mb-8">
             <h2 class="text-2xl font-bold mb-4 text-gray-800">Kategori Destinasi</h2>
-            <div class="flex flex-wrap gap-3">                <button class="category-chip active-category px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    Semua
-                </button>                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-mountain mr-2"></i>Alam
-                </button>
-                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-umbrella-beach mr-2"></i>Pantai
-                </button>
-                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-city mr-2"></i>Kota
-                </button>
-                <button class="category-chip px-4 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-indigo-600 hover:text-white transition">
-                    <i class="fas fa-monument mr-2"></i>Sejarah
-                </button>
-            </div>
         </div>
 
         <!-- Filter and Sort -->
@@ -98,11 +108,10 @@
                 <span class="font-bold"></span>
             </div>
             <div class="flex items-center">
-                <span class="mr-2 text-gray-600">Urutkan:</span>                
-                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <option>Semua</option>
-                    <option>Harga Termurah</option>
-                    <option>Harga Tertinggi</option>
+                <span class="mr-2 text-gray-600">Urutkan:</span>                  <select id="sortSelect" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="all">Semua</option>
+                    <option value="price-asc">Harga Termurah</option>
+                    <option value="price-desc">Harga Tertinggi</option>
                 </select>
             </div>
         </div>
@@ -349,10 +358,70 @@
                 this.classList.remove('bg-gray-200');
                 this.classList.add('bg-indigo-600', 'text-white');
                 
-                // In a real app, you would filter destinations here
-                console.log(`Filtering by: ${this.textContent.trim()}`);
+                filterDestinations();
             });
-        });
+        });        // Search and Sort functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const sortSelect = document.getElementById('sortSelect');
+        const destinationCards = document.querySelectorAll('.destination-card');
+        
+        function getPriceValue(card) {
+            const priceText = card.querySelector('.text-indigo-600').textContent;
+            return parseInt(priceText.replace(/[^0-9]/g, ''));
+        }
+
+        function filterDestinations() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const sortValue = sortSelect.value;
+            const activeCategory = document.querySelector('.category-chip.active-category')?.textContent.trim() || 'Semua';
+
+            // Convert NodeList to Array for sorting
+            let destinations = Array.from(destinationCards);
+
+            // Filter by search term
+            destinations = destinations.filter(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const location = card.querySelector('.text-gray-500').textContent.toLowerCase();
+                return (title.includes(searchTerm) || 
+                    description.includes(searchTerm) || 
+                    location.includes(searchTerm));
+            });
+
+            // Filter by category
+            if (activeCategory !== 'Semua') {
+                destinations = destinations.filter(card => {
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    return description.includes(activeCategory.toLowerCase());
+                });
+            }            // Sort destinations based on price
+            if (sortValue !== 'all') {
+                destinations.sort((a, b) => {
+                    const priceA = getPriceValue(a);
+                    const priceB = getPriceValue(b);
+                    return sortValue === 'price-asc' ? priceA - priceB : priceB - priceA;
+                });
+            }            // Update the display of cards
+            const container = document.querySelector('.grid');
+            const fragment = document.createDocumentFragment();
+            
+            // Add all cards to fragment in the correct order
+            destinations.forEach(card => {
+                fragment.appendChild(card);
+            });
+            
+            // Clear and repopulate the container
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            container.appendChild(fragment);
+        }
+
+        // Event listeners for search and sort
+        searchInput.addEventListener('input', filterDestinations);
+        searchButton.addEventListener('click', filterDestinations);
+        sortSelect.addEventListener('change', filterDestinations);
 
         // User menu dropdown toggle
         const userMenuButton = document.getElementById('user-menu-button');

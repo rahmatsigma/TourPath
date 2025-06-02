@@ -252,17 +252,22 @@
                     
                     if (isCompleted) {
                         cancelBtn.innerHTML = '<i class="fas fa-trash mr-1"></i> Hapus';
-                        completeBtn.innerHTML = '<i class="fas fa-undo mr-1"></i> Kembalikan';
-                        completeBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
-                        completeBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+                        completeBtn.remove(); // Menghapus button complete
+                        
+                        // Menambahkan text "Rencana Selesai"
+                        const completedText = document.createElement('div');
+                        completedText.className = 'flex-1 text-center py-2 text-green-600 font-medium';
+                        completedText.innerHTML = '<i class="fas fa-check-circle mr-1"></i> Rencana Selesai';
+                        cardElement.querySelector('.flex.justify-between.gap-2').appendChild(completedText);
+                        
                         // Add visual indicator for completed plans
-                        cardElement.classList.add('border-2', 'border-blue-500');
+                        cardElement.classList.add('border-2', 'border-green-500');
                     } else {
                         cancelBtn.innerHTML = '<i class="fas fa-times mr-1"></i> Batal';
                         completeBtn.innerHTML = '<i class="fas fa-check mr-1"></i> Selesai';
                         completeBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
                         completeBtn.classList.add('bg-green-500', 'hover:bg-green-600');
-                        cardElement.classList.remove('border-2', 'border-blue-500');
+                        cardElement.classList.remove('border-2', 'border-green-500');
                     }
                     
                     // Add event listeners for buttons
@@ -295,25 +300,9 @@
                             loadTravelPlans();
                         }
                     });
-                    
-                    completeBtn.addEventListener('click', () => {
-                        if (isCompleted) {
-                            if (confirm('Kembalikan rencana ini ke daftar yang belum selesai?')) {
-                                // Find and remove from completedPlans
-                                const completedIndex = completedPlans.findIndex(cp => 
-                                    cp.name === plan.name && 
-                                    cp.destination === plan.destination && 
-                                    cp.startDate === plan.startDate && 
-                                    cp.endDate === plan.endDate
-                                );
-                                if (completedIndex !== -1) {
-                                    const plan = completedPlans.splice(completedIndex, 1)[0];
-                                    activePlans.push(plan);
-                                    localStorage.setItem('travelPlans', JSON.stringify(activePlans));
-                                    localStorage.setItem('completedPlans', JSON.stringify(completedPlans));
-                                }
-                            }
-                        } else {
+
+                    if (!isCompleted) {
+                        completeBtn.addEventListener('click', () => {
                             if (confirm('Tandai rencana ini sebagai selesai?')) {
                                 // Find and remove from activePlans
                                 const planIndex = activePlans.findIndex(p => 
@@ -330,9 +319,9 @@
                                     alert('Selamat! Rencana perjalanan telah selesai.');
                                 }
                             }
-                        }
-                        loadTravelPlans();
-                    });
+                            loadTravelPlans();
+                        });
+                    }
                     
                     grid.appendChild(card);
                 });

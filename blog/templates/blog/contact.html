@@ -11,8 +11,32 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap"
-        rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+        rel="stylesheet">    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background-image: url('/static/assets/Background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Overlay gelap untuk meningkatkan keterbacaan teks */
+            z-index: 1;
+        }
+        
+        .hero-section > div {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
 
 <body>
@@ -76,9 +100,8 @@
                     </button>
                 </div>
             </div>
-        </div>
-    </nav>    <!-- Hero Section -->
-    <div class="hero-gradient text-white">
+        </div>    </nav>    <!-- Hero Section -->
+    <div class="hero-section text-white">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
@@ -89,40 +112,8 @@
                 </p>
             </div>
         </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">            <!-- Contact Form -->
-            <div class="bg-white rounded-lg shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
-                <form id="contact-form" class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-black-500">Name</label>                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors" required>
-                    </div>
-
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-black-500">Email</label>
-                        <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors" required>
-                    </div>
-
-                    <div>
-                        <label for="subject" class="block text-sm font-medium text-black-500">Subject</label>
-                        <input type="text" id="subject" name="subject" class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors" required>
-                    </div>
-
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-black-500">Message</label>
-                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-colors" required></textarea>
-                    </div>
-
-                    <div>
-                        <button type="submit" class="w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-            </div>            <!-- Contact Information -->
+    </div>    <!-- Contact Section -->    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div class="max-w-3xl mx-auto"><!-- Contact Information -->
             <div class="bg-white rounded-lg shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Get in touch</h2>
                 
@@ -164,17 +155,14 @@
 
                     <div class="pt-6 border-t border-gray-200">
                         <h4 class="text-lg font-medium text-gray-900 mb-4">Follow us</h4>
-                        <div class="flex space-x-4">                        <a href="#" class="text-gray-400 hover:text-indigo-700 transition-colors">
+                        <div class="flex space-x-4">                        <a href="https://www.facebook.com/share/1541fxhprB/" class="text-gray-400 hover:text-indigo-700 transition-colors">
                                 <i class="fab fa-facebook-f text-xl"></i>
                             </a>
-                            <a href="#" class="text-gray-400 hover:text-indigo-700 transition-colors">
-                                <i class="fab fa-twitter text-xl"></i>
+                            <a href="https://github.com/rahmatsigma/TourPath.git" class="text-gray-400 hover:text-indigo-700 transition-colors">
+                                <i class="fab fa-github text-xl"></i>
                             </a>
-                            <a href="#" class="text-gray-400 hover:text-indigo-700 transition-colors">
+                            <a href="https://www.instagram.com/rrahmat_prt?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-400 hover:text-indigo-700 transition-colors">
                                 <i class="fab fa-instagram text-xl"></i>
-                            </a>
-                            <a href="#" class="text-gray-400 hover:text-indigo-700 transition-colors">
-                                <i class="fab fa-linkedin-in text-xl"></i>
                             </a>
                         </div>
                     </div>
@@ -222,9 +210,9 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                        <li><a href="{% url 'bantuan' %}" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="{% url 'bantuan' %}" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="{% url 'bantuan' %}" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -250,17 +238,7 @@
                     userDropdown.classList.toggle('hidden');
                 });
             }
-            
-            // Contact form submission
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Add your form submission logic here
-                    alert('Thank you for your message! We will get back to you soon.');
-                    this.reset();
-                });
-            }
+              // No contact form needed
         });
     </script>
 </body>
