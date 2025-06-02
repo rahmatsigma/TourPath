@@ -1,6 +1,6 @@
-# TourPath Planner Perjalanan Wisata
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Welcome+to+Tour+Path)](https://git.io/typing-svg)
 
-Aplikasi blog sederhana yang dibuat dengan Django.
+Selamat datang di TourPath — sebuah proyek digital library sederhana yang kami bangun sebagai bagian dari Tugas Besar Mata Kuliah Struktur Data di Universitas Negeri Surabaya kampus UNESA 5.
 
 ##  Contributor
 |PROFIL |NAMA | NIM |
@@ -10,18 +10,6 @@ Aplikasi blog sederhana yang dibuat dengan Django.
 | [<img src="https://avatars.githubusercontent.com/u/207812064?v=4" width="50"/>](https://github.com/rahmatsigma) |**Riski Rahmattillah Pratama** | 24111814079 |
 | [<img src="https://avatars.githubusercontent.com/u/207812064?v=4" width="50"/>](https://github.com/rahmatsigma) |**Riski Rahmattillah Pratama** | 24111814079 |
 | [<img src="https://avatars.githubusercontent.com/u/207812064?v=4" width="50"/>](https://github.com/rahmatsigma) |**Riski Rahmattillah Pratama** | 24111814079 |
-| [<img src="https://avatars.githubusercontent.com/u/207812064?v=4" width="50"/>](https://github.com/rahmatsigma) |**Riski Rahmattillah Pratama** | 24111814079 |
-| [<img src="https://avatars.githubusercontent.com/u/207812064?v=4" width="50"/>](https://github.com/rahmatsigma) |**Riski Rahmattillah Pratama** | 24111814079 |
 
-## Fitur
-- Menampilkan daftar post blog
-- Detail post blog
-- Admin panel untuk manajemen post
-- Responsive design
 
-## Instalasi
 
-1. Clone repository ini:
-```bash
-git clone https://github.com/rahmatsigma/TourPath.git
-cd mywebsite
