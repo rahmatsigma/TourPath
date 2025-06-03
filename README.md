@@ -12,4 +12,4 @@ Selamat datang di TourPath — sebuah proyek digital library sederhana yang kami
 | [<img src="https://avatars.githubusercontent.com/u/208028798?v=4" width="50"/>](https://github.com/nopalPwaelah) |**Naufal Akbar Putra Pradana** | 24111814027 |
 
 
-
+sekian
